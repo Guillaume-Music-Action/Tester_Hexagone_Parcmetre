@@ -15,6 +15,12 @@ data class Monnaie(val valeur: Int, val devise: Devises) {
             return (this.valeur * DOLLAR_VERS_EUROS == other.valeur)
         return false
     }
+
+    override fun hashCode(): Int {
+        var result = valeur
+        result = 31 * result + devise.hashCode()
+        return result
+    }
 }
 
 enum class Devises {

@@ -5,7 +5,7 @@ import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 
-class TestThatDevise: StringSpec({
+class MonnaieTest: StringSpec({
 
 
     "je peux acheter une chevre avec des dollars".config(enabled = true) {
@@ -36,6 +36,24 @@ class TestThatDevise: StringSpec({
 
         // Assert
         unDollar shouldBe deuxEuros
+    }
+
+    "Monnaie equals and hashCode should work correctly" {
+
+        val monnaie1 = Monnaie(5, Devises.EUROS)
+        val monnaie2 = Monnaie(5, Devises.EUROS)
+        val monnaie3 = Monnaie(5, Devises.DOLLARS)
+        val monnaie4 = Monnaie(10, Devises.EUROS)
+
+        // Test equality
+        monnaie1 shouldBe monnaie2
+        monnaie1 shouldNotBe monnaie3
+        monnaie1 shouldNotBe monnaie4
+
+        // Test hashCode
+        monnaie1.hashCode() shouldBe monnaie2.hashCode()
+        monnaie1.hashCode() shouldNotBe monnaie3.hashCode()
+        monnaie1.hashCode() shouldNotBe monnaie4.hashCode()
     }
 
 })
