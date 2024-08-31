@@ -1,4 +1,4 @@
-package parcmetre.domain.values
+package parcmetre.metier.objetValeurs
 
 data class Monnaie(val valeur: Int, val devise: Devises) {
 

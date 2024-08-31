@@ -1,10 +1,10 @@
 package parcmetre.adapteurs
 
-import parcmetre.behaviors.ToutesLesHorloges
+import parcmetre.comportements.ToutesLesHorloges
 import java.time.LocalDateTime
 
 class VraieHorloge : ToutesLesHorloges {
-    override fun maintenantALaMinute(): LocalDateTime {
+    override fun quelleHeureEstIl(): LocalDateTime {
        return LocalDateTime.now()
     }
 

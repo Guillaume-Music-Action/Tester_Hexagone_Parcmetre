@@ -1,4 +1,4 @@
-package exercice_1.regles_metier
+package parcmetre.metier
 
 interface UneBaseDeTickets {
     fun enregistrer(ticket: Ticket)

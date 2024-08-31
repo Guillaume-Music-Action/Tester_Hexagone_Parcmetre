@@ -1,9 +1,12 @@
-package exercice_1.regles_metier
+package parcmetre.metier
 
-import parcmetre.behaviors.ToutesLesHorloges
+import parcmetre.comportements.ToutesLesHorloges
 import java.time.LocalDateTime
 
 class Ticket(horloge: ToutesLesHorloges, duree: Int) {
-    val heureDebutStationnement: LocalDateTime = horloge.maintenantALaMinute()
+
+    val heureDebutStationnement: LocalDateTime = horloge.quelleHeureEstIl()
+
     val heureFinStationnement: LocalDateTime = heureDebutStationnement.plusMinutes(duree.toLong())
+
 }

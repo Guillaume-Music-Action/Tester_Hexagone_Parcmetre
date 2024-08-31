@@ -1,6 +1,9 @@
-package exercice_1.regles_metier
+package adapters.fakes
 
-class FausseBase : UneBaseDeTickets {
+import parcmetre.metier.Ticket
+import parcmetre.metier.UneBaseDeTickets
+
+class FauxStockage : UneBaseDeTickets {
 
     val listDesTickets = mutableListOf<Ticket>()
 

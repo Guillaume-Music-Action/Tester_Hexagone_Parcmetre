@@ -12,7 +12,7 @@ class `1_TestVraiHorloge` : StringSpec({
          //Act / When
 
         // Assert / Then
-       horloge.maintenantALaMinute() shouldNotBe horloge.maintenantALaMinute()
+       horloge.quelleHeureEstIl() shouldNotBe horloge.quelleHeureEstIl()
 
     }
 

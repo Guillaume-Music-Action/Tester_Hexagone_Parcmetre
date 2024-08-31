@@ -1,6 +1,7 @@
-package exercice_1.regles_metier
+package parcmetre.metier
 
 class ParcMetre(val laBase: UneBaseDeTickets) {
+
     fun creer(ticket: Ticket) {
         laBase.enregistrer(ticket)
     }
