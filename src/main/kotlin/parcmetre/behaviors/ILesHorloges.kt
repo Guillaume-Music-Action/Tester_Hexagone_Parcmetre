@@ -1,8 +1,8 @@
-package parcmetre.comportements
+package parcmetre.behaviors
 
 import java.time.LocalDateTime
 
-interface ToutesLesHorloges {
+interface ILesHorloges {
 
     fun quelleHeureEstIl(): LocalDateTime
 

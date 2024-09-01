@@ -1,4 +1,6 @@
-package parcmetre.metier
+package parcmetre.behaviors
+
+import parcmetre.domain.entities.Ticket
 
 interface UneBaseDeTickets {
     fun enregistrer(ticket: Ticket)

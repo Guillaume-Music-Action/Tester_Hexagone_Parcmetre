@@ -1,17 +1,21 @@
 package adapters.fakes
 
-import parcmetre.metier.Ticket
-import parcmetre.metier.UneBaseDeTickets
+import parcmetre.behaviors.ITicketRepository
+import parcmetre.domain.entities.Ticket
+import parcmetre.models.DTOs.TicketDto
 
-class FauxStockage : UneBaseDeTickets {
+class FauxStockage : ITicketRepository {
 
-    val listDesTickets = mutableListOf<Ticket>()
+    val listDesTickets = mutableListOf<TicketDto>()
 
-    override fun enregistrer(ticket: Ticket) {
+    override fun saveTicket(ticket: TicketDto) = runCatching {
         listDesTickets.add(ticket)
     }
 
-    override fun retrouver(): List<Ticket> = listDesTickets
+    override fun cardinalityTickets(): Result<Int> = Result.success(listDesTickets.size)
+
+    override fun getTickets(): Result<List<TicketDto>> = Result.success( listDesTickets)
 
 }
+
 

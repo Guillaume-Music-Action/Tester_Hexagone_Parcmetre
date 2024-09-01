@@ -1,9 +1,9 @@
-package parcmetre.adapters
+package parcmetre.adapters.storage
 
-import parcmetre.comportements.ToutesLesHorloges
+import parcmetre.behaviors.ILesHorloges
 import java.time.LocalDateTime
 
-class VraieHorloge : ToutesLesHorloges {
+class VraieHorloge : ILesHorloges {
     override fun quelleHeureEstIl(): LocalDateTime {
        return LocalDateTime.now()
     }

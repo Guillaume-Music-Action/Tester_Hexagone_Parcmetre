@@ -1,11 +1,14 @@
 package parcmetre.adapters.storage.postGreSQL
 
+import parcmetre.behaviors.ITicketRepository
 import parcmetre.models.DTOs.TicketDto
 import java.sql.DriverManager
 
 
-class TicketRepository(jdbcUrl: String, username: String, password: String) {
+class TicketRepository(jdbcUrl: String, username: String, password: String) : ITicketRepository {
     private val storageConnection = DriverManager.getConnection(jdbcUrl, username, password)
+
+
     fun createTableTicket()  = runCatching {
         val createTableStatement = storageConnection.prepareStatement(
             """ 
@@ -18,7 +21,7 @@ class TicketRepository(jdbcUrl: String, username: String, password: String) {
         createTableStatement.execute()
     }
 
-    fun saveTicket(ticket: TicketDto)  = runCatching {
+    override fun saveTicket(ticket: TicketDto)  = runCatching {
         val insertStatement = storageConnection.prepareStatement(
             "insert into ticket(id, park_time_minutes) values (?, ?)"
         )
@@ -27,7 +30,7 @@ class TicketRepository(jdbcUrl: String, username: String, password: String) {
         insertStatement.execute()
     }
 
-    fun cardinalityTickets(): Result< Int> = runCatching {
+    override fun cardinalityTickets(): Result< Int> = runCatching {
         val selectStatement = storageConnection.prepareStatement(
             "select count(*) as cardinalityTickets from ticket"
         )
@@ -35,5 +38,9 @@ class TicketRepository(jdbcUrl: String, username: String, password: String) {
         result.next()
         var res =  result.getInt("cardinalityTickets")
         return Result.success( res)
+    }
+
+    override fun getTickets(): Result<List<TicketDto>> {
+        TODO("Not yet implemented")
     }
 }

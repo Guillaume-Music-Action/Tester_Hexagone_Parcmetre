@@ -1,9 +1,9 @@
-package parcmetre.metier
+package parcmetre.domain.entities
 
-import parcmetre.comportements.ToutesLesHorloges
+import parcmetre.behaviors.ILesHorloges
 import java.time.LocalDateTime
 
-class Ticket(horloge: ToutesLesHorloges, duree: Int) {
+class Ticket(horloge: ILesHorloges, duree: Int) {
 
     val heureDebutStationnement: LocalDateTime = horloge.quelleHeureEstIl()
 

@@ -1,9 +1,9 @@
 package adapters.fakes
 
-import parcmetre.comportements.ToutesLesHorloges
+import parcmetre.behaviors.ILesHorloges
 import java.time.LocalDateTime
 
-class FausseHorloge(val leMaintenant: LocalDateTime) : ToutesLesHorloges {
+class FausseHorloge(val leMaintenant: LocalDateTime) : ILesHorloges {
     override fun quelleHeureEstIl(): LocalDateTime = leMaintenant
 
 }

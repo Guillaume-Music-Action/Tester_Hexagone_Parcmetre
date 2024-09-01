@@ -1,4 +1,6 @@
-package parcmetre.metier
+package parcmetre.domain.entities
+
+import parcmetre.behaviors.UneBaseDeTickets
 
 class ParcMetre(val laBase: UneBaseDeTickets) {
 
