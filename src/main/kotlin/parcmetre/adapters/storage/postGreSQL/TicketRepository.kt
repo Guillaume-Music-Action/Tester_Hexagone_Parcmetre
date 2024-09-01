@@ -6,7 +6,7 @@ import java.sql.DriverManager
 
 class TicketRepository(jdbcUrl: String, username: String, password: String) {
     private val storageConnection = DriverManager.getConnection(jdbcUrl, username, password)
-    fun createTableTicket() {
+    fun createTableTicket()  = runCatching {
         val createTableStatement = storageConnection.prepareStatement(
             """ 
                 create table if not exists ticket(
@@ -18,7 +18,7 @@ class TicketRepository(jdbcUrl: String, username: String, password: String) {
         createTableStatement.execute()
     }
 
-    fun saveTicket(ticket: TicketDto) {
+    fun saveTicket(ticket: TicketDto)  = runCatching {
         val insertStatement = storageConnection.prepareStatement(
             "insert into ticket(id, park_time_minutes) values (?, ?)"
         )
@@ -27,12 +27,13 @@ class TicketRepository(jdbcUrl: String, username: String, password: String) {
         insertStatement.execute()
     }
 
-    fun cardinalityTickets(): Int {
+    fun cardinalityTickets(): Result< Int> = runCatching {
         val selectStatement = storageConnection.prepareStatement(
             "select count(*) as cardinalityTickets from ticket"
         )
         val result = selectStatement.executeQuery()
         result.next()
-        return result.getInt("cardinalityTickets")
+        var res =  result.getInt("cardinalityTickets")
+        return Result.success( res)
     }
 }

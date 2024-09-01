@@ -19,11 +19,14 @@ class PostGreAdaptorTest : StringSpec({
 
         // Act
         val countTickets = repo.cardinalityTickets()
+        // Assert
+        countTickets.isSuccess  shouldBe true
+        countTickets.getOrThrow() shouldBe 2
 
+        //tear down
         postgres.stop()
 
-        // Assert
-        countTickets shouldBe 2
+
 
     }
 })
