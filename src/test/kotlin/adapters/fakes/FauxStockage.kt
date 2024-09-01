@@ -1,7 +1,7 @@
 package adapters.fakes
 
 import parcmetre.behaviors.ITicketRepository
-import parcmetre.domain.entities.Ticket
+
 import parcmetre.models.DTOs.TicketDto
 
 class FauxStockage : ITicketRepository {
