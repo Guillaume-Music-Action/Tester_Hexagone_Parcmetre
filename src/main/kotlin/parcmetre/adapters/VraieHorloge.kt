@@ -1,4 +1,4 @@
-package parcmetre.adapteurs
+package parcmetre.adapters
 
 import parcmetre.comportements.ToutesLesHorloges
 import java.time.LocalDateTime
