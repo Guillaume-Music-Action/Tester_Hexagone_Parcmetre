@@ -15,7 +15,7 @@ class `1_TestParcmetre` : StringSpec({
         val parcmetre = ParcMetre("00001" )
 
         val ticket  = parcmetre.EditerTicker(argent =  Monnaie(1, Devises.EUROS))
-        val expected =(30   * minutes)
+        val expected = 30 * minutes
         ticket.dureeDeStationnment shouldBe  expected
 
 

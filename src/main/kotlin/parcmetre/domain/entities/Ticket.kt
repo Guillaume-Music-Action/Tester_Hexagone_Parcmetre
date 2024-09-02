@@ -10,15 +10,14 @@ data class Ticket(
     val heureEntree : LocalDateTime,
     val dureeDeStationnment : Measure<Time>
 ) {
-    companion object {
-        fun Creation(idGenerateur: IdGenerateur, localDateTime: LocalDateTime, i: Int): Ticket {
-        TODO()
-        }
-    }
 }
 
 class UsineDeTickets(idGenerateur: IdGenerateur) {
-    fun Creation(localDateTime: LocalDateTime, i: Int): Ticket {
+    fun Creation(heureEntree: LocalDateTime, dureeMinutes: Int): Ticket {
+        TODO()
+    }
+
+    fun Creation(heureEntree: LocalDateTime, duree: Measure<Time>): Ticket {
         TODO()
     }
 
