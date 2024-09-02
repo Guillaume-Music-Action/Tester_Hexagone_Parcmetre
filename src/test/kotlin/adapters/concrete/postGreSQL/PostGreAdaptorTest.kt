@@ -23,7 +23,7 @@ class PostGreAdaptorTest : StringSpec({
         countTickets.isSuccess  shouldBe true
         countTickets.getOrThrow() shouldBe 2
 
-        //tear down
+        // Tear Down
         postgres.stop()
 
 

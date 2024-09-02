@@ -8,16 +8,16 @@ import parcmetre.models.DTOs.TicketDto
 class FauxStockageTest : FunSpec({
 
     val testTicket = TicketDto(1, 2)
-    val stockageFactory = {  -> FauxStockage()}
+    val fauxStockageFactory = {  -> FauxStockage()}
 
-        include( StorageSharedTests.storageSaveAndCount(stockage = stockageFactory()))
+        include( StorageSharedTests.storageSaveAndCount(stockage = fauxStockageFactory()))
 
-        include(StorageSharedTests.storageSaveAndRead(stockage = stockageFactory()))
+        include(StorageSharedTests.storageSaveAndRead(stockage = fauxStockageFactory()))
 
         test("saveTicket should add a ticket ") {
-            val leStockage = stockageFactory()
+            val leStockage = fauxStockageFactory()
             leStockage.saveTicket(testTicket)
-            ( leStockage  as FauxStockage).listDesTickets.size shouldBe 1
+            leStockage.listDesTickets.size shouldBe 1
         }
 
 })
