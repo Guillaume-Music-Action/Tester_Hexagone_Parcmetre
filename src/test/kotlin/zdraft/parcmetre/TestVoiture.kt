@@ -1,4 +1,4 @@
-package exercice_1
+package zdraft.parcmetre
 
 import Voiture.VoitureBuilder
 import io.kotest.core.spec.style.StringSpec

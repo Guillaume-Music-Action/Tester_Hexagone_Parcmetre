@@ -1,6 +1,5 @@
 package parcmetre.behaviors
 
-import parcmetre.domain.entities.Ticket
 import parcmetre.models.DTOs.TicketDto
 
 interface ITicketRepository {

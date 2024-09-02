@@ -1,12 +1,10 @@
 package parcmetre.domain.entities
 
-import parcmetre.behaviors.ILesHorloges
-import java.time.LocalDateTime
+import kotlinx.datetime.LocalDateTime
+import ulid.ULID
 
-class Ticket(horloge: ILesHorloges, duree: Int) {
 
-    val heureDebutStationnement: LocalDateTime = horloge.quelleHeureEstIl()
-
-    val heureFinStationnement: LocalDateTime = heureDebutStationnement.plusMinutes(duree.toLong())
-
-}
+data class Ticket(
+    val id: String = ULID.randomULID(),
+    val marqueurEntree : LocalDateTime
+)

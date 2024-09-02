@@ -1,13 +1,12 @@
 package parcmetre.domain.entities
 
-import parcmetre.behaviors.UneBaseDeTickets
+class ParcMetre() {
 
-class ParcMetre(val laBase: UneBaseDeTickets) {
+    //que fait il / quelles sont ses responsabilités
 
-    fun creer(ticket: Ticket) {
-        laBase.enregistrer(ticket)
-    }
 
-    fun retrouverTous(): List<Ticket> = laBase.retrouver()
+
+
+
 
 }
