@@ -3,6 +3,8 @@ package exercice_1.regles_metier
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
+import io.nacular.measured.units.Time.Companion.minutes
+import io.nacular.measured.units.times
 import kotlinx.datetime.LocalDateTime
 import parcmetre.domain.entities.IdGenerateur
 import parcmetre.domain.entities.UsineDeTickets
@@ -20,7 +22,7 @@ class TestTicket : StringSpec({
 
         ticket.id shouldNotBe null
         ticket.id shouldNotBe ""
-        ticket.dureeDeStationnmentEnMinutes shouldBe 42
+        ticket.dureeDeStationnment shouldBe 42 * minutes
         ticket.heureEntree.year shouldBe 2016
         ticket.heureEntree.dayOfMonth shouldBe 15
     }
