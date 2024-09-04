@@ -20,21 +20,15 @@ class SimpleUsesCasesTests : StringSpec({
         val demande = DemandeDuTicket(immatriculationVehicule = "imma", montantEuro = 5)
         val useCase = AcheterUnTicketAuParcmetre()
 
-
-        println("on demarre  la couroutine")
         coroutineScope {
 
             val continuation = async { useCase.handle(demande) }
-            println("dans la couroutine, on n'attends pas le resultat")
             val res= continuation.await()
             res.resultat shouldBeSuccess
-             res   .resultat.getOrNull() shouldNotBe null
-            println("dans la couroutine, maintenant, on a attendu le resultat")
+            res.resultat.getOrNull() shouldNotBe null
 
         }
-
-        println("et c'est fini !")
-
+        // verifier avec l'adapter que le ticket est bien dedans
 
     }
 })

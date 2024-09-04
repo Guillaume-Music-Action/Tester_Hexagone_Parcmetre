@@ -10,14 +10,10 @@ class AcheterUnTicketAuParcmetre : IRequestHandler<DemandeDuTicket, ReponseALaDe
     override suspend fun handle(demande: DemandeDuTicket): ReponseALaDemandeDuTicket  = coroutineScope {
         println("on demarre le request handler, ca va prendre du temps")
 
-        //launchDotPrinter(150) // c'est un exemple, dans la vraie vie on va appeler le stockage qui est "lent"
+        //inscrire ici l'appel métier
 
-        val job1 = async { launchDotPrinter(100, '+') }
-        val job2 = async { launchDotPrinter(200, '-') }
-        job2.await()
-        job1.await()
-        println()
-        println("on a eu les réponses que l'on attendait!")
+        //puis l'appel à l'adapter de stockage
+        launchDotPrinter(150) // c'est un exemple, dans la vraie vie on va appeler le stockage qui est "lent"
 
          ReponseALaDemandeDuTicket(
             resultat = Result.failure(TODO("faites passer ce test au vert"))
@@ -25,8 +21,12 @@ class AcheterUnTicketAuParcmetre : IRequestHandler<DemandeDuTicket, ReponseALaDe
         )
     }
 
+
+
+
+
     suspend fun launchDotPrinter( times : Int, char: Char = '.') = coroutineScope {
-      println("DotPrinter ${times}")
+      println("appel long (${times})")
         repeat(times) {
             delay(10)  // Delay for 10 milliseconds
             print(char)
