@@ -1,11 +1,15 @@
 package parcmetre.adapters.driven
 
+import kotlinx.datetime.Clock
+import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.TimeZone
+import kotlinx.datetime.toLocalDateTime
 import parcmetre.behaviors.ILesHorloges
-import java.time.LocalDateTime
+
 
 class VraieHorloge : ILesHorloges {
     override fun quelleHeureEstIl(): LocalDateTime {
-       return LocalDateTime.now() //todo : replace by kotlinx datetime
+       return Clock.System.now().toLocalDateTime( TimeZone.UTC)
     }
 
 }

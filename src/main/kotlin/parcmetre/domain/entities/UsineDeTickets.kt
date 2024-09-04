@@ -8,7 +8,6 @@ import parcmetre.behaviors.IJeDonneDesIdentifiants
 class UsineDeTickets(val idGenerateur: IJeDonneDesIdentifiants) {
 
     fun Creation(heureEntree: LocalDateTime, dureeMinutes: Int): Ticket {
-
         TODO()
     }
 

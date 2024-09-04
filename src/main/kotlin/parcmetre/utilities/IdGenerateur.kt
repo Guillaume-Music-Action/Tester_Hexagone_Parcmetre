@@ -4,12 +4,12 @@ import parcmetre.behaviors.IJeDonneDesIdentifiants
 import ulid.ULID
 
 
-val UlidGenerator = IJeDonneDesIdentifiants {
+val UlidGenerateur = IJeDonneDesIdentifiants {
     ULID.randomULID()
-} // la beauté des interfaces fonctionnelles
+} // juste pour la beauté des interfaces fonctionnelles
 
 
-object IdGenerateur : IJeDonneDesIdentifiants {
+object testableIdGenerateur : IJeDonneDesIdentifiants {
 
     override fun idSuivant(): String {
         TODO("quelque chose de plus facile à tester")

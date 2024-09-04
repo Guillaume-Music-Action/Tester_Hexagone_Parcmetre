@@ -9,9 +9,8 @@ class `3_TestVraiHorloge` : StringSpec({
     "le vrai temps".config(enabled = true) {
         // Arrange / Given
         val horloge = VraieHorloge()
-         //Act / When
 
-        // Assert / Then
+        //Act /  Assert / Then
        horloge.quelleHeureEstIl() shouldNotBe horloge.quelleHeureEstIl()
 
     }
