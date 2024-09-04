@@ -6,6 +6,8 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import parcmetre.domain.valueObjects.Devises
 import parcmetre.domain.valueObjects.Monnaie
+import parcmetre.domain.valueObjects.Monnaie.Companion.Dollars
+import parcmetre.domain.valueObjects.Monnaie.Companion.Euros
 
 class MonnaieTest: StringSpec({
 
@@ -32,8 +34,8 @@ class MonnaieTest: StringSpec({
 
     "je peux echanger des Euros avec des dollars".config(enabled = true) {
         // Arrange
-        val unDollar = Monnaie(1, Devises.DOLLARS)
-        val deuxEuros = Monnaie(2, Devises.EUROS)
+        val unDollar = Dollars(1)
+        val deuxEuros = Euros(2)
         //Act
 
         // Assert
@@ -42,10 +44,10 @@ class MonnaieTest: StringSpec({
 
     "Monnaie equals and hashCode should work correctly" {
 
-        val monnaie1 = Monnaie(5, Devises.EUROS)
-        val monnaie2 = Monnaie(5, Devises.EUROS)
-        val monnaie3 = Monnaie(5, Devises.DOLLARS)
-        val monnaie4 = Monnaie(10, Devises.EUROS)
+        val monnaie1 = Euros(5 )
+        val monnaie2 = Euros(5)
+        val monnaie3 = Dollars(5)
+        val monnaie4 = Euros(10)
 
         // Test equality
         monnaie1 shouldBe monnaie2

@@ -1,4 +1,4 @@
-package parcmetre.adapters.storage.postGreSQL
+package parcmetre.adapters.driven.storage.postGreSQL
 
 import parcmetre.behaviors.ITicketRepository
 import parcmetre.models.DTOs.TicketDto

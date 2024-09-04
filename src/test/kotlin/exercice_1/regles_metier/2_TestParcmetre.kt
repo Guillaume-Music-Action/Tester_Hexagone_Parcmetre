@@ -9,7 +9,7 @@ import parcmetre.domain.entities.ParcMetre
 import parcmetre.domain.valueObjects.Devises
 import parcmetre.domain.valueObjects.Monnaie
 
-class `1_TestParcmetre` : StringSpec({
+class `2_TestParcmetre` : StringSpec({
 
     "je veux prendre un ticket au parcemetre pour 30 minutes"  {
         val parcmetre = ParcMetre("00001" )

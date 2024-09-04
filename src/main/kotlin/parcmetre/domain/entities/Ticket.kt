@@ -12,17 +12,3 @@ data class Ticket(
 ) {
 }
 
-class UsineDeTickets(idGenerateur: IdGenerateur) {
-    fun Creation(heureEntree: LocalDateTime, dureeMinutes: Int): Ticket {
-        TODO()
-    }
-
-    fun Creation(heureEntree: LocalDateTime, duree: Measure<Time>): Ticket {
-        TODO()
-    }
-
-}
-
-object IdGenerateur {
-
-}

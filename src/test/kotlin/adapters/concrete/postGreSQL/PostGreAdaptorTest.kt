@@ -3,7 +3,7 @@ package adapters.concrete.postGreSQL
 import io.kotest.core.spec.style.StringSpec
 import org.testcontainers.containers.PostgreSQLContainer
 import io.kotest.matchers.*
-import parcmetre.adapters.storage.postGreSQL.TicketRepository
+import parcmetre.adapters.driven.storage.postGreSQL.TicketRepository
 import parcmetre.models.DTOs.TicketDto
 
 class PostGreAdaptorTest : StringSpec({
