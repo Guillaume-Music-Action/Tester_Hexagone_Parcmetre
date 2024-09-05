@@ -49,11 +49,29 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.6.1")
     implementation("io.nacular.measured:measured:0.4.1")
 
-    implementation 'com.sun.mail:android-mail:1.6.7'
-    implementation 'com.sun.mail:android-activation:1.6.7'
 
     implementation 'com.approvaltests:approvaltests:24.3.0'
     implementation 'com.github.javaparser:javaparser-core:3.26.1'
+
+    // Koin for Kotlin apps
+    implementation "io.insert-koin:koin-core:3.5.3"
+    //web server
+    implementation(platform("org.http4k:http4k-bom:5.24.0.0"))
+    implementation("org.http4k:http4k-format-core")
+    implementation("org.http4k:http4k-core")
+    implementation("org.http4k:http4k-format-jackson")
+    implementation("org.http4k:http4k-server-jetty")
+    implementation("org.http4k:http4k-server-undertow")
+    implementation("org.http4k:http4k-client-apache")
+    implementation("org.http4k:http4k-client-okhttp")
+    implementation("org.http4k:http4k-testing-hamkrest")
+//    import org.http4k.hamkrest.hasStatus
+    // retrofit
+    testImplementation 'com.squareup.retrofit2:retrofit:2.11.0'
+    // lib for parsing JSON api responses
+    testImplementation 'com.squareup.retrofit2:converter-gson:2.11.0'
+    testImplementation("com.squareup.okhttp3:mockwebserver:4.11.0")
+
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.3'
     testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.10.2'
