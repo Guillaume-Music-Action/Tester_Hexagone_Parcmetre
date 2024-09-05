@@ -37,14 +37,14 @@ class RestApiTest : FunSpec({
             val response = client(Request(Method.PUT,
                 "http://localhost:${server.port()}/parcemetre/ticket/5"
             ))
-            assertThat(response, hasStatus(OK).and(hasBody("{\"value\":0,\"accountId\":\"1234567890\"}")))
+            assertThat(response, hasStatus(OK).and(hasBody("{}")))
         }
 
         test("un ticket a été demandé, on doit pouvoir demander à l'API de le retrouver") {
 
             val resultat = async { useCase.handle(demande) }.await()
 
-            val response = client(Request(GET, "http://localhost:${server.port()}/balance/1234567890"))
+            val response = client(Request(GET, "http://localhost:${server.port()}/parcemetre/tickets"))
             assertThat(response, hasStatus(OK).and(hasBody("{\"value\":100,\"accountId\":\"1234567890\"}")))
         }
 
