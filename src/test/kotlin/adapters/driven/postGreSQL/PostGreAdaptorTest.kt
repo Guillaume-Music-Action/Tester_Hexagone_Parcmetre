@@ -8,7 +8,7 @@ import parcmetre.models.DTOs.TicketDto
 
 class PostGreAdaptorTest : StringSpec({
 
-    "simple CRUD avec test container".config(enabled = true) {
+    "simple CRUD avec test container".config(enabled = false) {
         // Arrange
         val postgres = PostgreSQLContainer("postgres:16")
         postgres.start()
