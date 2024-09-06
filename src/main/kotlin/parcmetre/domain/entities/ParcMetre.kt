@@ -2,19 +2,22 @@ package parcmetre.domain.entities
 
 import io.nacular.measured.units.Measure
 import io.nacular.measured.units.Time
+import io.nacular.measured.units.Time.Companion.minutes
+import io.nacular.measured.units.times
 import parcmetre.domain.valueObjects.Monnaie
 
 class ParcMetre(val Id: String) {
 
 
+
+    fun CreerTicket(argent: Monnaie): Ticket  = Ticket(  dureeDeStationnment = 120 * minutes)
+
+
+
+
+
     //que fait il / quelles sont ses responsabilités
-    fun EditerTicker(duree: Measure<Time>): Ticket {
+    fun CreerTicket(duree: Measure<Time>): Ticket {
         TODO()
     }
-
-    fun EditerTicker(argent: Monnaie): Ticket {
-        TODO("Not yet implemented")
-    }
-
-
 }
