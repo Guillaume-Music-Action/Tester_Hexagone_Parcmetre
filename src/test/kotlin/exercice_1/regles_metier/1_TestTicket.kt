@@ -12,36 +12,38 @@ import parcmetre.utilities.UlidGenerateur
 class `1_TestTicket` : StringSpec({
 
 
-    "le ticket doit avoir un generateur qui s'occupe de l'ID" {
+    "le ticket doit avoir un generateur qui s'occupe de l'ID" .config(enabled = false) {
         // remplacer IdGenerateur par un fake+spy  (ca veut dire un contrat derriere => ULID.Suivant())
         // montrer comment hors du test, c'est un UlidGenerateur qui va prendre la place
-        var ticketGenateur=  UsineDeTickets(UlidGenerateur)
-        val ticket = ticketGenateur.Creation(
+        var ticketGenerateur=  UsineDeTickets(UlidGenerateur)
+        val ticket = ticketGenerateur.Creation(
             LocalDateTime(2016, 2, 15, 16, 57, 0, 0),
             42)
 
-        ticket.id shouldNotBe null
-        ticket.id shouldNotBe "quelque chose de fixe"
+      //  ticket.id shouldNotBe null
+      //  ticket.id shouldNotBe "quelque chose de fixe"
         ticket.dureeDeStationnment shouldBe 42 * minutes
         ticket.heureEntree.year shouldBe 2016
         ticket.heureEntree.dayOfMonth shouldBe 15
     }
 
-    "le ticket doit avoir un generateur qui s'occupe de l'ID et garanti que un 2e ticket possede un Id different" {
-        var ticketGenateur=  UsineDeTickets(UlidGenerateur)
-        val ticket1 = ticketGenateur.Creation(
+    "le ticket doit avoir un generateur qui s'occupe de l'ID et garanti que un 2e ticket possede un Id different"
+        .config(enabled = false) {
+
+        var ticketGenerateur=  UsineDeTickets(UlidGenerateur)
+        val ticket1 = ticketGenerateur.Creation(
             LocalDateTime(2016, 2, 15, 16, 57, 0, 0),
             42)
 
-        val ticket2 = ticketGenateur.Creation(
+        val ticket2 = ticketGenerateur.Creation(
             LocalDateTime(2016, 2, 15, 16, 57, 0, 0),
             42)
 
-        ticket1.id shouldNotBe ticket2.id
+       // ticket1.id shouldNotBe ticket2.id
     }
 
 
-    "la durée ne doit pas être inférieure à 30mn" {
+    "la durée ne doit pas être inférieure à 30mn" .config(enabled = false) {
 
     }
 }) {

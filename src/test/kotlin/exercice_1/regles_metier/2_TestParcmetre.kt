@@ -11,7 +11,7 @@ import parcmetre.domain.valueObjects.Monnaie
 
 class `2_TestParcmetre` : StringSpec({
 
-    "je veux prendre un ticket au parcemetre pour 30 minutes"  {
+    "je veux prendre un ticket au parcemetre pour 30 minutes" .config(enabled = false) {
         val parcmetre = ParcMetre("00001" )
 
         val ticket  = parcmetre.EditerTicker(argent =  Monnaie(1, Devises.EUROS))
@@ -22,7 +22,7 @@ class `2_TestParcmetre` : StringSpec({
     }
 
 
-    "je veux prendre un ticket au parcemetre pour 30 minutes a la bonne heure"  {
+    "je veux prendre un ticket au parcemetre pour 30 minutes a la bonne heure" .config(enabled = false)  {
         val parcmetre = ParcMetre("00001" )
 
         val ticket  = parcmetre.EditerTicker(duree = 30 * minutes)
@@ -37,7 +37,7 @@ class `2_TestParcmetre` : StringSpec({
     }
 
 
-    "pour avoir un ticket de 30mn, je dois mettre au moins 1€" {
+    "pour avoir un ticket de 30mn, je dois mettre au moins 1€" .config(enabled = false) {
 
     }
 

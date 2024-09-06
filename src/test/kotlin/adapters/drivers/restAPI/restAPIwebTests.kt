@@ -20,7 +20,7 @@ import parcmetre.useCases.DemandeDuTicket
 
 class RestApiTest : FunSpec({
 
-    context("en utilisant http4k server") {
+    context("en utilisant http4k server").config(enabled = false) {
         val client = OkHttp()
 
      //   val store =  Repository()

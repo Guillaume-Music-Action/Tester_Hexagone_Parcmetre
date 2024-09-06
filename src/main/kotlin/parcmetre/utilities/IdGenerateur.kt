@@ -4,10 +4,15 @@ import parcmetre.behaviors.IJeDonneDesIdentifiants
 import ulid.ULID
 
 
+class ulidGenerateur : IJeDonneDesIdentifiants   {
+    override fun idSuivant(): String = ULID.randomULID()
+}
+
+// juste pour la beauté des interfaces fonctionnelles
 val UlidGenerateur = IJeDonneDesIdentifiants {
     ULID.randomULID()
-} // juste pour la beauté des interfaces fonctionnelles
-
+}
+//probleme: c'est pas facile à tester
 
 object testableIdGenerateur : IJeDonneDesIdentifiants {
 
