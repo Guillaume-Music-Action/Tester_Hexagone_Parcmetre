@@ -1,4 +1,4 @@
-package adapters.concrete.postGreSQL
+package adapters.driven.postGreSQL
 
 import io.kotest.core.spec.style.StringSpec
 import org.testcontainers.containers.PostgreSQLContainer

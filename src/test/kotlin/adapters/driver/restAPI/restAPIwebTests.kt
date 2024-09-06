@@ -1,4 +1,4 @@
-package adapters.drivers.restAPI
+package adapters.driver.restAPI
 
 
 import com.natpryce.hamkrest.and

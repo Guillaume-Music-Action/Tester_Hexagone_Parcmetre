@@ -1,4 +1,4 @@
-package adapters.fakes
+package adapters.exercice_3_adapters_fakes
 
 import adapters.StorageSharedTests
 import io.kotest.core.spec.style.FunSpec

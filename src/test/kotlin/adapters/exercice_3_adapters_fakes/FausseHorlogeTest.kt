@@ -1,4 +1,4 @@
-package adapters.fakes
+package adapters.exercice_3_adapters_fakes
 
 import junit.framework.TestCase.assertEquals
 import kotlinx.datetime.LocalDateTime

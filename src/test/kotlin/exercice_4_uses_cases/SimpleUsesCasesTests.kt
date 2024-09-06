@@ -1,4 +1,4 @@
-package exercice_2_uses_cases
+package exercice_4_uses_cases
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.result.shouldBeSuccess

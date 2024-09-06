@@ -6,10 +6,28 @@ import io.kotest.matchers.shouldNotBe
 import io.nacular.measured.units.Time.Companion.minutes
 import io.nacular.measured.units.times
 import kotlinx.datetime.LocalDateTime
+import parcmetre.domain.entities.Ticket
 import parcmetre.domain.entities.UsineDeTickets
 import parcmetre.utilities.UlidGenerateur
 
 class `1_TestTicket` : StringSpec({
+
+    "le ticket ne peut avoir un montant à zero ou négatif" .config(enabled = false) {
+
+        var sut =  Ticket.bidon()
+
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
     "le ticket doit avoir un generateur qui s'occupe de l'ID" .config(enabled = false) {
@@ -26,6 +44,13 @@ class `1_TestTicket` : StringSpec({
         ticket.heureEntree.year shouldBe 2016
         ticket.heureEntree.dayOfMonth shouldBe 15
     }
+
+
+
+
+
+
+
 
     "le ticket doit avoir un generateur qui s'occupe de l'ID et garanti que un 2e ticket possede un Id different"
         .config(enabled = false) {

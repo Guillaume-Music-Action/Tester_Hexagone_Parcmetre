@@ -1,4 +1,4 @@
-package exercice_3_monetique.draft;
+package exercice_6_monetique.draft;
 
 import draft.AutreExemple;
 import draft.Exemple;
