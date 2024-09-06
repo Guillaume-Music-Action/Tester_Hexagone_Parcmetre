@@ -9,14 +9,14 @@ import io.nacular.measured.units.times
 import parcmetre.domain.entities.ParcMetre
 import parcmetre.domain.valueObjects.Devises
 import parcmetre.domain.valueObjects.Monnaie
-import parcmetre.utilities.fauxGenerateur
+import parcmetre.utilities.GenerateurLineaire
 
 @AutoScan
 class `2_TestParcmetre` : StringSpec({
 
 
     "je veux prendre un ticket au parcemetre pour 120 minutes" .config(enabled = true) {
-        val sut = ParcMetre("", fauxGenerateur() )
+        val sut = ParcMetre("", GenerateurLineaire() )
 
         val ticket  = sut.CreerTicket(argent =  Monnaie(1, Devises.EUROS))
 
@@ -24,7 +24,7 @@ class `2_TestParcmetre` : StringSpec({
     }
 
     "je veux prendre un ticket au parcemetre pour 240 minutes" .config(enabled = true) {
-        val sut = ParcMetre("", fauxGenerateur() )
+        val sut = ParcMetre("", GenerateurLineaire() )
 
         val ticket  = sut.CreerTicket(argent =  Monnaie(2, Devises.EUROS))
 
@@ -32,7 +32,7 @@ class `2_TestParcmetre` : StringSpec({
     }
 
     "deux tickets créés ont deux identificants distincts" .config(enabled = true) {
-        val sut = ParcMetre("", fauxGenerateur() )
+        val sut = ParcMetre("", GenerateurLineaire() )
 
         val ticket1  = sut.CreerTicket(argent =  Monnaie(2, Devises.EUROS))
         val ticket2  = sut.CreerTicket(argent =  Monnaie(2, Devises.EUROS))
@@ -50,7 +50,7 @@ class `2_TestParcmetre` : StringSpec({
 
 
     "je veux prendre un ticket au parcemetre pour 30 minutes a la bonne heure" .config(enabled = false)  {
-        val parcmetre = ParcMetre("00001", fauxGenerateur() )
+        val parcmetre = ParcMetre("00001", GenerateurLineaire() )
 
         val ticket  = parcmetre.CreerTicket(duree = 30 * minutes)
 
