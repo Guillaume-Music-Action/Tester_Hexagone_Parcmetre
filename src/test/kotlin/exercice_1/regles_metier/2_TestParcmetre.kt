@@ -30,7 +30,7 @@ class `2_TestParcmetre` : StringSpec({
         ticket.dureeDeStationnment shouldBe  30 * minutes
 
         //ca marchera pas
-        ticket.heureEntree shouldBe Clock.System.now().toLocalDateTime( TimeZone.UTC)
+       // ticket.heureEntree shouldBe Clock.System.now().toLocalDateTime( TimeZone.UTC)
 
 
         //    .plus( DateTimePeriod(minutes = 30) , TimeZone.UTC)

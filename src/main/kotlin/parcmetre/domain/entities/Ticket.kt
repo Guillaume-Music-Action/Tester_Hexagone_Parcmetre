@@ -9,8 +9,6 @@ import ulid.ULID
 
 data class Ticket(
 
-    val heureEntree : LocalDateTime,
-    // montant ?
     val dureeDeStationnment : Measure<Time>
 )
 {
@@ -18,7 +16,7 @@ data class Ticket(
          fun bidon(): Ticket {
             return Ticket(
                // id =  "",
-                heureEntree =  LocalDateTime.parse("2000-01-01T00:00:00") ,
+              //  heureEntree =  LocalDateTime.parse("2000-01-01T00:00:00") ,
                 dureeDeStationnment = (0 * seconds)
             )
         }
