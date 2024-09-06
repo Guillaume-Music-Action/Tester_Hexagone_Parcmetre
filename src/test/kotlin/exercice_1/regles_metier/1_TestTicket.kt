@@ -14,13 +14,9 @@ import parcmetre.utilities.UlidGenerateur
 class `1_TestTicket` : StringSpec({
 
     "le ticket est là" .config(enabled = true) {
-
-        var sut =  Ticket(dureeDeStationnment = 42 * minutes  )
-
+        var sut =  Ticket("", dureeDeStationnment = 42 * minutes  )
         sut.dureeDeStationnment shouldBe 42 * (60 * seconds)
-
     }
-
 
 
 

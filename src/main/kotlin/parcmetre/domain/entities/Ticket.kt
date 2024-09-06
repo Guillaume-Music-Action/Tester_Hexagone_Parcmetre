@@ -8,19 +8,13 @@ import kotlinx.datetime.*
 import ulid.ULID
 
 data class Ticket(
-
+    val Id: String,
     val dureeDeStationnment : Measure<Time>
 )
 {
-    companion object {
-         fun bidon(): Ticket {
-            return Ticket(
-               // id =  "",
-              //  heureEntree =  LocalDateTime.parse("2000-01-01T00:00:00") ,
-                dureeDeStationnment = (0 * seconds)
-            )
-        }
-    }
+
+
+
 }
 
 // val id: String ,  //extarnilser la création du Id du ticket
