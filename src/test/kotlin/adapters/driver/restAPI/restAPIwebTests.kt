@@ -15,6 +15,7 @@ import org.http4k.hamkrest.hasStatus
 import location.adapters.driver.httpServer
 import location.useCases.AcheterUnTicketDeLocation
 import location.useCases.DemandeDuTicket
+import location.utilities.testableIdGenerateur
 
 
 class RestApiTest : FunSpec({
@@ -24,7 +25,7 @@ class RestApiTest : FunSpec({
 
      //   val store =  Repository()
         val demande = DemandeDuTicket(immatriculationVehicule = "imma", montantEuro = 5)
-        val useCase = AcheterUnTicketDeLocation()
+        val useCase = AcheterUnTicketDeLocation(testableIdGenerateur())
 
         val server = httpServer(0, useCase)
 

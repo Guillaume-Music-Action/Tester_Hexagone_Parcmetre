@@ -1,5 +1,7 @@
 import location.adapters.driver.httpServer
+import location.behaviors.IJeDonneDesIdentifiants
 import location.useCases.AcheterUnTicketDeLocation
+import location.utilities.UlidGenerateur
 
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
@@ -9,10 +11,10 @@ import org.koin.dsl.module
 
 
 class App : KoinComponent {
-    private val helloService by inject<HelloService>()
+    private val generateurId by inject<IJeDonneDesIdentifiants>()
 
     fun start() {
-        httpServer(0, AcheterUnTicketDeLocation()).start()
+        httpServer(0, AcheterUnTicketDeLocation(generateurId)).start()
     }
 
 }
@@ -27,7 +29,5 @@ fun main() {
 }
 
 val mainModule = module {
-    single(named("foo")) { Greeting("Mr. Foo") }
-    single { Greeting("John Doe") }
-    single { HelloServiceImpl(get(named("foo"))) as HelloService }
+  single<IJeDonneDesIdentifiants>() { UlidGenerateur() }
 }

@@ -7,6 +7,7 @@ import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import location.useCases.AcheterUnTicketDeLocation
 import location.useCases.DemandeDuTicket
+import location.utilities.testableIdGenerateur
 
 
 class SimpleUsesCasesTests : StringSpec({
@@ -18,7 +19,7 @@ class SimpleUsesCasesTests : StringSpec({
     "l'utilisateur prend un ticket et celui est enregistré pour de bon" .config(enabled = true) {
 
         val demande = DemandeDuTicket(immatriculationVehicule = "imma", montantEuro = 5)
-        val useCase = AcheterUnTicketDeLocation()
+        val useCase = AcheterUnTicketDeLocation( generateurId = testableIdGenerateur()  )
 
         coroutineScope {
 

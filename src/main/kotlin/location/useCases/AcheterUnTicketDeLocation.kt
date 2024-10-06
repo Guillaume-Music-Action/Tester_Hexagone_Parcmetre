@@ -2,18 +2,19 @@ package location.useCases
 
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
+import location.behaviors.IJeDonneDesIdentifiants
 import location.behaviors.IRequestHandler
+import location.domain.entities.CentraleLocation
 
 @Suppress("UNREACHABLE_CODE")
-class AcheterUnTicketDeLocation : IRequestHandler<DemandeDuTicket, ReponseALaDemandeDuTicket> {
-
-    constructor( )
+class AcheterUnTicketDeLocation(val generateurId: IJeDonneDesIdentifiants)  : IRequestHandler<DemandeDuTicket, ReponseALaDemandeDuTicket> {
 
     override suspend fun handle(demande: DemandeDuTicket): ReponseALaDemandeDuTicket  = coroutineScope {
         println("on demarre le request handler, ca va prendre du temps")
 
         //faire ici l'appel métier
-       // var centraleLocation = CentraleLocation( ) -> on l'a déjà
+        // il nous faut un private val generateurId: IJeDonneDesIdentifiants
+     //   var centraleLocation = CentraleLocation( generateurId )
 
         //puis l'appel à l'adapter de stockage
         appelBaseDeDonnees(150) // c'est un exemple, dans la vraie vie on va appeler le stockage qui est "lent"
