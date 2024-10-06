@@ -4,8 +4,7 @@ import location.behaviors.IJeDonneDesIdentifiants
 import ulid.ULID
 
 
-
-class UlidGenerateur : IJeDonneDesIdentifiants   {
+class UlidGenerateur : IJeDonneDesIdentifiants {
     override fun idSuivant(): String = ULID.randomULID()
 }
 
@@ -14,7 +13,6 @@ val ulidGenerateur = IJeDonneDesIdentifiants {
     ULID.randomULID()
 }
 //probleme: c'est pas facile à tester
-
 
 
 class testableIdGenerateur : IJeDonneDesIdentifiants {

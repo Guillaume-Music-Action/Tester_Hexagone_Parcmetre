@@ -9,7 +9,7 @@ import location.behaviors.ILesHorloges
 
 class VraieHorloge : ILesHorloges {
     override fun quelleHeureEstIl(): LocalDateTime {
-       return Clock.System.now().toLocalDateTime( TimeZone.UTC)
+        return Clock.System.now().toLocalDateTime(TimeZone.UTC)
     }
 
 }

@@ -11,7 +11,7 @@ public class Exemple implements IExemple {
         Price = price;
     }
 
-    public void augmenter(int i)  {
+    public void augmenter(int i) {
         Price += i;
     }
 }

@@ -14,6 +14,4 @@ class UsineDeTickets(val idGenerateur: IJeDonneDesIdentifiants) {
 }
 
 
-
-
 //val id = this.idGenerateur.idSuivant()

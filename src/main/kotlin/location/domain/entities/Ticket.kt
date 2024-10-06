@@ -5,5 +5,5 @@ import io.nacular.measured.units.Time
 
 data class Ticket(
     val Id: String,
-    val dureeDeLocation : Measure<Time>
+    val dureeDeLocation: Measure<Time>
 )
