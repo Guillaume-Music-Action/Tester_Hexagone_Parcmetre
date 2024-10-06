@@ -2,7 +2,7 @@ package location.utilities
 
 import location.behaviors.IJeDonneDesIdentifiants
 
-class GenerateurLineaire : IJeDonneDesIdentifiants {
+class LinearIdGenerator : IJeDonneDesIdentifiants {
     var compteur : Int = 0
     override fun idSuivant(): String {
         compteur += 1
