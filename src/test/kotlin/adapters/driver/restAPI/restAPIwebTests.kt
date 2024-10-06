@@ -13,7 +13,7 @@ import org.http4k.core.Status.Companion.OK
 import org.http4k.hamkrest.hasBody
 import org.http4k.hamkrest.hasStatus
 import location.adapters.driver.httpServer
-import location.useCases.AcheterUnTicketAuParcmetre
+import location.useCases.AcheterUnTicketDeLocation
 import location.useCases.DemandeDuTicket
 
 
@@ -24,7 +24,7 @@ class RestApiTest : FunSpec({
 
      //   val store =  Repository()
         val demande = DemandeDuTicket(immatriculationVehicule = "imma", montantEuro = 5)
-        val useCase = AcheterUnTicketAuParcmetre()
+        val useCase = AcheterUnTicketDeLocation()
 
         val server = httpServer(0, useCase)
 

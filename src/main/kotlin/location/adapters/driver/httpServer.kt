@@ -11,7 +11,7 @@ import org.http4k.routing.routes
 import org.http4k.server.Http4kServer
 import org.http4k.server.Jetty
 import org.http4k.server.asServer
-import location.useCases.AcheterUnTicketAuParcmetre
+import location.useCases.AcheterUnTicketDeLocation
 
 
 data class TicketDTO(
@@ -21,10 +21,10 @@ data class TicketDTO(
     val sommePayee: String
 )
 
-fun httpServer(port: Int, useCaseReadBalance: AcheterUnTicketAuParcmetre): Http4kServer =
+fun httpServer(port: Int, useCaseReadBalance: AcheterUnTicketDeLocation): Http4kServer =
     parcmetreHttpHandler(useCaseReadBalance).asServer(Jetty(port))
 
-fun parcmetreHttpHandler(useCase: AcheterUnTicketAuParcmetre): HttpHandler = CatchLensFailure.then(
+fun parcmetreHttpHandler(useCase: AcheterUnTicketDeLocation): HttpHandler = CatchLensFailure.then(
     routes(
         "/parcemetre/ticket/{sommePayee}" bind Method.PUT to { request: Request ->
             //   val accountIdRequest = Query.string().required(name = "sommePayee")
