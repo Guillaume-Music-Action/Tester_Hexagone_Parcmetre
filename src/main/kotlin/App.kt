@@ -15,7 +15,8 @@ class App : KoinComponent {
     private val generateurId by inject<IJeDonneDesIdentifiants>()
 
     fun start() {
-        httpServer(8818, AcheterUnTicketDeLocation(generateurId)).start()
+        httpServer(8818, AcheterUnTicketDeLocation(generateurId))
+            .start()
     }
 
 }
