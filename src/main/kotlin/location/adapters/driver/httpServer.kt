@@ -16,7 +16,6 @@ import org.http4k.server.Jetty
 import org.http4k.server.asServer
 import location.useCases.AcheterUnTicketDeLocation
 import location.useCases.DemandeDuTicket
-import location.useCases.ReponseALaDemandeDuTicket
 import org.http4k.core.Status.Companion.I_M_A_TEAPOT
 
 
@@ -36,10 +35,10 @@ fun locationHttpHandler(useCase: AcheterUnTicketDeLocation): HttpHandler = Catch
     routes(
         "/location/ticket/{sommePayee}" bind Method.PUT to { request: Request ->
             //   val accountIdRequest = Query.string().required(name = "sommePayee")
-            val sommePayeeString = request.path("sommePayee")!!
+            val sommePayee = request.path("sommePayee")!!
 
             //verifier que c'est un nombre positif (validation)
-            when (  val parsedAmount = sommePayeeString.toIntOrNull()) {
+            when (  val parsedAmount = sommePayee.toIntOrNull()) {
                 null -> Response(I_M_A_TEAPOT)
                 else -> {
                     val demande = DemandeDuTicket(
@@ -49,6 +48,7 @@ fun locationHttpHandler(useCase: AcheterUnTicketDeLocation): HttpHandler = Catch
 
                     var reponse: Result<Ticket>
                     runBlocking {
+                        //to get asynchronous, we need to use Loom https://www.javaadvent.com/2022/12/asynchronous-functional-web-server-in-kotlin.html
                         reponse = useCase.handle(demande)
                     }
 
@@ -56,7 +56,7 @@ fun locationHttpHandler(useCase: AcheterUnTicketDeLocation): HttpHandler = Catch
                     {
                         reponse.isSuccess -> {
                             val ticket = reponse.getOrNull()!!
-                            val ticketDTO = TicketDTO(ticket.Id, "", ticket.dureeDeLocation.toString(), sommePayeeString)
+                            val ticketDTO = TicketDTO(ticket.Id, "", ticket.dureeDeLocation.toString(), sommePayee)
                             val bodyJson = Body.auto<TicketDTO>().toLens()
                             Response(OK).with(bodyJson of ticketDTO)
                         }
