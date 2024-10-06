@@ -1,4 +1,4 @@
-package parcmetre.behaviors
+package location.behaviors
 
 import kotlinx.datetime.LocalDateTime
 

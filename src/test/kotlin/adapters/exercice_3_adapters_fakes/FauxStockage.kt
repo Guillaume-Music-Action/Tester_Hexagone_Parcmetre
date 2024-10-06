@@ -1,8 +1,8 @@
 package adapters.exercice_3_adapters_fakes
 
-import parcmetre.behaviors.ITicketRepository
+import location.behaviors.ITicketRepository
 
-import parcmetre.models.DTOs.TicketDto
+import location.models.DTOs.TicketDto
 
 class FauxStockage : ITicketRepository {
 

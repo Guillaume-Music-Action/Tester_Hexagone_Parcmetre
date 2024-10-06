@@ -1,7 +1,7 @@
 package adapters.exercice_3_adapters_fakes
 
 import kotlinx.datetime.LocalDateTime
-import parcmetre.behaviors.ILesHorloges
+import location.behaviors.ILesHorloges
 
 
 class FausseHorloge(val leMaintenant: LocalDateTime) : ILesHorloges {

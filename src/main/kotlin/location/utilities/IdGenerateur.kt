@@ -1,6 +1,6 @@
-package parcmetre.utilities
+package location.utilities
 
-import parcmetre.behaviors.IJeDonneDesIdentifiants
+import location.behaviors.IJeDonneDesIdentifiants
 import ulid.ULID
 
 

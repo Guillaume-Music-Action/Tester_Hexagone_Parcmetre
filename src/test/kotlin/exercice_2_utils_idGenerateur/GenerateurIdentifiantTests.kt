@@ -3,8 +3,7 @@ package exercice_2_utils_idGenerateur
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
-import parcmetre.domain.entities.Ticket
-import parcmetre.utilities.testableIdGenerateur
+import location.utilities.testableIdGenerateur
 
 class GenerateurIdentifiantTests : StringSpec({
 

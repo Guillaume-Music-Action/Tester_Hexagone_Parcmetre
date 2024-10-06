@@ -5,8 +5,8 @@ import io.kotest.matchers.result.shouldBeSuccess
 import io.kotest.matchers.shouldNotBe
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
-import parcmetre.useCases.AcheterUnTicketAuParcmetre
-import parcmetre.useCases.DemandeDuTicket
+import location.useCases.AcheterUnTicketAuParcmetre
+import location.useCases.DemandeDuTicket
 
 
 class SimpleUsesCasesTests : StringSpec({

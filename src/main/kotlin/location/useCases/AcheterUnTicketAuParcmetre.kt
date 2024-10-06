@@ -1,9 +1,8 @@
-package parcmetre.useCases
+package location.useCases
 
-import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
-import parcmetre.behaviors.IRequestHandler
+import location.behaviors.IRequestHandler
 
 class AcheterUnTicketAuParcmetre : IRequestHandler<DemandeDuTicket, ReponseALaDemandeDuTicket> {
 

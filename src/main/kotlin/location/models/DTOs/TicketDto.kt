@@ -1,3 +1,3 @@
-package parcmetre.models.DTOs
+package location.models.DTOs
 
 data class TicketDto(val id: Int, val elapseMinutes: Int)

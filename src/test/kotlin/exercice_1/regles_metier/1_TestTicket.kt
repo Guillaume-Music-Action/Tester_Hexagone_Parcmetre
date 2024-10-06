@@ -2,20 +2,19 @@ package exercice_1.regles_metier
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
-import io.kotest.matchers.shouldNotBe
 import io.nacular.measured.units.Time.Companion.minutes
 import io.nacular.measured.units.Time.Companion.seconds
 import io.nacular.measured.units.times
 import kotlinx.datetime.LocalDateTime
-import parcmetre.domain.entities.Ticket
-import parcmetre.domain.entities.UsineDeTickets
-import parcmetre.utilities.UlidGenerateur
+import location.domain.entities.Ticket
+import location.domain.entities.UsineDeTickets
+import location.utilities.UlidGenerateur
 
 class `1_TestTicket` : StringSpec({
 
     "le ticket est là" .config(enabled = true) {
-        var sut =  Ticket("", dureeDeStationnment = 42 * minutes  )
-        sut.dureeDeStationnment shouldBe 42 * (60 * seconds)
+        var sut =  Ticket("",    42 * minutes  )
+        sut.dureeDeLocation shouldBe 42 * (60 * seconds)
     }
 
 
@@ -39,7 +38,7 @@ class `1_TestTicket` : StringSpec({
 
       //  ticket.id shouldNotBe null
       //  ticket.id shouldNotBe "quelque chose de fixe"
-        ticket.dureeDeStationnment shouldBe 42 * minutes
+        ticket.dureeDeLocation shouldBe 42 * minutes
     //    ticket.heureEntree.year shouldBe 2016
             //  ticket.heureEntree.dayOfMonth shouldBe 15
     }

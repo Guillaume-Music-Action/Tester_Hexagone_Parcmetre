@@ -2,8 +2,8 @@ package adapters
 
 import io.kotest.core.spec.style.funSpec
 import io.kotest.matchers.shouldBe
-import parcmetre.behaviors.ITicketRepository
-import parcmetre.models.DTOs.TicketDto
+import location.behaviors.ITicketRepository
+import location.models.DTOs.TicketDto
 
 object StorageSharedTests
 {

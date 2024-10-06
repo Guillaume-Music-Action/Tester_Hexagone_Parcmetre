@@ -4,10 +4,10 @@ package metier.objetValeurs
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
-import parcmetre.domain.valueObjects.Devises
-import parcmetre.domain.valueObjects.Monnaie
-import parcmetre.domain.valueObjects.Monnaie.Companion.Dollars
-import parcmetre.domain.valueObjects.Monnaie.Companion.Euros
+import location.domain.valueObjects.Devises
+import location.domain.valueObjects.Monnaie
+import location.domain.valueObjects.Monnaie.Companion.Dollars
+import location.domain.valueObjects.Monnaie.Companion.Euros
 
 class MonnaieTest: StringSpec({
 

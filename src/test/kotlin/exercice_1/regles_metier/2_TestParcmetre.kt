@@ -6,33 +6,33 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.nacular.measured.units.Time.Companion.minutes
 import io.nacular.measured.units.times
-import parcmetre.domain.entities.ParcMetre
-import parcmetre.domain.valueObjects.Devises
-import parcmetre.domain.valueObjects.Monnaie
-import parcmetre.utilities.GenerateurLineaire
+import location.domain.entities.CentraleLocation
+import location.domain.valueObjects.Devises
+import location.domain.valueObjects.Monnaie
+import location.utilities.GenerateurLineaire
 
 @AutoScan
 class `2_TestParcmetre` : StringSpec({
 
 
     "je veux prendre un ticket au parcemetre pour 120 minutes" .config(enabled = true) {
-        val sut = ParcMetre("", GenerateurLineaire() )
+        val sut = CentraleLocation("", GenerateurLineaire() )
 
         val ticket  = sut.CreerTicket(argent =  Monnaie(1, Devises.EUROS))
 
-        ticket.dureeDeStationnment shouldBe   120 * minutes
+        ticket.dureeDeLocation shouldBe   120 * minutes
     }
 
     "je veux prendre un ticket au parcemetre pour 240 minutes" .config(enabled = true) {
-        val sut = ParcMetre("", GenerateurLineaire() )
+        val sut = CentraleLocation("", GenerateurLineaire() )
 
         val ticket  = sut.CreerTicket(argent =  Monnaie(2, Devises.EUROS))
 
-        ticket.dureeDeStationnment shouldBe   240 * minutes
+        ticket.dureeDeLocation shouldBe   240 * minutes
     }
 
     "deux tickets créés ont deux identificants distincts" .config(enabled = true) {
-        val sut = ParcMetre("", GenerateurLineaire() )
+        val sut = CentraleLocation("", GenerateurLineaire() )
 
         val ticket1  = sut.CreerTicket(argent =  Monnaie(2, Devises.EUROS))
         val ticket2  = sut.CreerTicket(argent =  Monnaie(2, Devises.EUROS))
@@ -50,11 +50,11 @@ class `2_TestParcmetre` : StringSpec({
 
 
     "je veux prendre un ticket au parcemetre pour 30 minutes a la bonne heure" .config(enabled = false)  {
-        val parcmetre = ParcMetre("00001", GenerateurLineaire() )
+        val parcmetre = CentraleLocation("00001", GenerateurLineaire() )
 
         val ticket  = parcmetre.CreerTicket(duree = 30 * minutes)
 
-        ticket.dureeDeStationnment shouldBe  30 * minutes
+        ticket.dureeDeLocation shouldBe  30 * minutes
 
         //ca marchera pas
        // ticket.heureEntree shouldBe Clock.System.now().toLocalDateTime( TimeZone.UTC)

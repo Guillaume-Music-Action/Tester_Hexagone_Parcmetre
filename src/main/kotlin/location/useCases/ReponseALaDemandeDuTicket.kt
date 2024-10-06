@@ -1,6 +1,6 @@
-package parcmetre.useCases
+package location.useCases
 
-import parcmetre.domain.entities.Ticket
+import location.domain.entities.Ticket
 
 data class ReponseALaDemandeDuTicket(val resultat: Result<Ticket>) {
 

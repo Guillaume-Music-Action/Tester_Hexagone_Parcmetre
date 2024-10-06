@@ -1,9 +1,9 @@
-package parcmetre.domain.entities
+package location.domain.entities
 
 import io.nacular.measured.units.Measure
 import io.nacular.measured.units.Time
 import kotlinx.datetime.LocalDateTime
-import parcmetre.behaviors.IJeDonneDesIdentifiants
+import location.behaviors.IJeDonneDesIdentifiants
 
 class UsineDeTickets(val idGenerateur: IJeDonneDesIdentifiants) {
 

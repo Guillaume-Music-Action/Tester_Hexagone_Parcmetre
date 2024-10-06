@@ -1,10 +1,10 @@
-package parcmetre.adapters.driven
+package location.adapters.driven
 
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDateTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
-import parcmetre.behaviors.ILesHorloges
+import location.behaviors.ILesHorloges
 
 
 class VraieHorloge : ILesHorloges {

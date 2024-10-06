@@ -1,7 +1,7 @@
-package parcmetre.adapters.driven.storage.postGreSQL
+package location.adapters.driven.storage.postGreSQL
 
-import parcmetre.behaviors.ITicketRepository
-import parcmetre.models.DTOs.TicketDto
+import location.behaviors.ITicketRepository
+import location.models.DTOs.TicketDto
 import java.sql.DriverManager
 
 

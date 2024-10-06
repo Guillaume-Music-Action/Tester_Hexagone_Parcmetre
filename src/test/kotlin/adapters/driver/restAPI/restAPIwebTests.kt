@@ -5,7 +5,6 @@ import com.natpryce.hamkrest.and
 import com.natpryce.hamkrest.assertion.assertThat
 
 import io.kotest.core.spec.style.FunSpec
-import kotlinx.coroutines.async
 import org.http4k.client.OkHttp
 import org.http4k.core.Method
 import org.http4k.core.Method.GET
@@ -13,9 +12,9 @@ import org.http4k.core.Request
 import org.http4k.core.Status.Companion.OK
 import org.http4k.hamkrest.hasBody
 import org.http4k.hamkrest.hasStatus
-import parcmetre.adapters.driver.httpServer
-import parcmetre.useCases.AcheterUnTicketAuParcmetre
-import parcmetre.useCases.DemandeDuTicket
+import location.adapters.driver.httpServer
+import location.useCases.AcheterUnTicketAuParcmetre
+import location.useCases.DemandeDuTicket
 
 
 class RestApiTest : FunSpec({

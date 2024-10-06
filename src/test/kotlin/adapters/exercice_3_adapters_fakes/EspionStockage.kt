@@ -1,7 +1,7 @@
 package adapters.exercice_3_adapters_fakes
 
-import parcmetre.behaviors.ITicketRepository
-import parcmetre.models.DTOs.TicketDto
+import location.behaviors.ITicketRepository
+import location.models.DTOs.TicketDto
 
 class EspionStockage : ITicketRepository {
     override fun saveTicket(ticket: TicketDto): Result<Boolean> {

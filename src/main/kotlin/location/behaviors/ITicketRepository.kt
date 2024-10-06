@@ -1,6 +1,6 @@
-package parcmetre.behaviors
+package location.behaviors
 
-import parcmetre.models.DTOs.TicketDto
+import location.models.DTOs.TicketDto
 
 interface ITicketRepository {
     fun saveTicket(ticket: TicketDto): Result<Boolean>
