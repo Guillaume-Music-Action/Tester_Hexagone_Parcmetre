@@ -10,17 +10,6 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 
-class App : KoinComponent {
-
-    private val generateurId by inject<IJeDonneDesIdentifiants>()
-
-    fun start() {
-        httpServer(8818, AcheterUnTicketDeLocation(generateurId))
-            .start()
-    }
-
-}
-
 fun main() {
     startKoin {
         printLogger()
@@ -29,9 +18,18 @@ fun main() {
     App().start()
 }
 
+class App : KoinComponent {
+    private val generateurId by inject<IJeDonneDesIdentifiants>()
+
+    fun start() {
+        httpServer(8818, AcheterUnTicketDeLocation(generateurId))
+            .start()
+    }
+}
+
+
 val productionModule = module {
     single<IJeDonneDesIdentifiants>() { UlidGenerateur() }
-
     single<IJeDonneDesIdentifiants>(named("test")) { LinearIdGenerator() }
 }
 
