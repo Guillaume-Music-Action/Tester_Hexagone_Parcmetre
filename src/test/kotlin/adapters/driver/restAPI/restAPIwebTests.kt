@@ -12,14 +12,14 @@ import org.http4k.core.Request
 import org.http4k.core.Status.Companion.OK
 import org.http4k.hamkrest.hasBody
 import org.http4k.hamkrest.hasStatus
-import location.adapters.driver.httpServer
+import location.adapters.driver.http.httpServer
 import location.useCases.AcheterUnTicketDeLocation
 import location.useCases.DemandeDuTicket
 
 
 class RestApiTest : FunSpec({
 
-    context("en utilisant http4k server").config(enabled = false) {
+    context("en utilisant http4k server").config(enabled = true) {
         val client = OkHttp()
 
      //   val store =  Repository()
@@ -34,10 +34,14 @@ class RestApiTest : FunSpec({
             val response = client(Request(Method.PUT,
                 "http://localhost:${server.port()}/parcemetre/ticket/5"
             ))
-            assertThat(response, hasStatus(OK).and(hasBody("{}")))
+            assertThat(response, hasStatus(OK).and(hasBody(
+                "{\"id\":\"\",\"heureEntree\":\"\",\"dureeDeLocation\":\"\",\"sommePayee\":\"\"}")))
+            //TODO: put real data in the response
         }
 
-        test("un ticket a été demandé, on doit pouvoir demander à l'API de le retrouver") {
+
+
+        test("un ticket a été demandé, on doit pouvoir demander à l'API de le retrouver").config(enabled = false) {
 
            // val resultat = async { useCase.handle(demande) }.await()
 

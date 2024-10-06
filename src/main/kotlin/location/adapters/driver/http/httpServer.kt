@@ -1,4 +1,4 @@
-package location.adapters.driver
+package location.adapters.driver.http
 
 
 import org.http4k.core.*
