@@ -9,24 +9,15 @@ import productionModule
 import org.koin.core.qualifier.named
 import org.koin.test.KoinTest
 import org.koin.test.inject
+import testModule
 
 
-class InjectionDepencyTest : FunSpec(), KoinTest {
+class InjectionDepency2Test : FunSpec(), KoinTest {
 
-    override fun extensions() = listOf(KoinExtension(productionModule))
-
-
-    init {
-        val userService by inject<IJeDonneDesIdentifiants>( )
-        test("use UlidGenerateur") {
-
-            userService.idSuivant().length  shouldBe  26 //Ulid have 26 characters
-        }
-    }
-
+    override fun extensions() = listOf(KoinExtension(testModule))
 
     init {
-        val userService by inject<IJeDonneDesIdentifiants>(qualifier = named("test"))
+        val userService by inject<IJeDonneDesIdentifiants>()
         test("use LinearIdGenerator") {
 
             userService.idSuivant()  shouldBe "FAUX-ID-1" //linear id renvoit toujours la meme

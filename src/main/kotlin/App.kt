@@ -22,13 +22,18 @@ class App : KoinComponent {
 fun main() {
     startKoin {
         printLogger()
-        modules(mainModule)
+        modules(productionModule)
     }
     App().start()
 }
 
-val mainModule = module {
+val productionModule = module {
     single<IJeDonneDesIdentifiants>() { UlidGenerateur() }
-    //    single<Service>(named("test")) { ServiceImpl() }
+
     single<IJeDonneDesIdentifiants>(named("test")) { LinearIdGenerator() }
+}
+
+
+val testModule = module {
+    single<IJeDonneDesIdentifiants> { LinearIdGenerator() }
 }
