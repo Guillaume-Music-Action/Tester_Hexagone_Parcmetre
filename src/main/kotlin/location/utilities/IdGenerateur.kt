@@ -4,6 +4,19 @@ import location.behaviors.IJeDonneDesIdentifiants
 import ulid.ULID
 
 
+
+class UlidGenerateur : IJeDonneDesIdentifiants   {
+    override fun idSuivant(): String = ULID.randomULID()
+}
+
+// juste pour la beauté des interfaces fonctionnelles
+val ulidGenerateur = IJeDonneDesIdentifiants {
+    ULID.randomULID()
+}
+//probleme: c'est pas facile à tester
+
+
+
 class testableIdGenerateur : IJeDonneDesIdentifiants {
 
     override fun idSuivant(): String {
@@ -11,14 +24,3 @@ class testableIdGenerateur : IJeDonneDesIdentifiants {
     }
 
 }
-
-
-class ulidGenerateur : IJeDonneDesIdentifiants   {
-    override fun idSuivant(): String = ULID.randomULID()
-}
-
-// juste pour la beauté des interfaces fonctionnelles
-val UlidGenerateur = IJeDonneDesIdentifiants {
-    ULID.randomULID()
-}
-//probleme: c'est pas facile à tester

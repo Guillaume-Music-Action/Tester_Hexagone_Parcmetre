@@ -7,10 +7,8 @@ import location.behaviors.IJeDonneDesIdentifiants
 
 class UsineDeTickets(val idGenerateur: IJeDonneDesIdentifiants) {
 
-    companion object {
-        fun Creation(heureEntree: LocalDateTime, duree: Measure<Time>): Ticket {
-            TODO()
-        }
+    fun Creation(heureEntree: LocalDateTime, duree: Measure<Time>): Ticket {
+        TODO()
     }
 
 }
