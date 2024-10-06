@@ -15,6 +15,7 @@ import org.http4k.hamkrest.hasStatus
 import location.adapters.driver.httpServer
 import location.useCases.AcheterUnTicketDeLocation
 import location.useCases.DemandeDuTicket
+import location.utilities.LinearIdGenerator
 import location.utilities.testableIdGenerateur
 
 
@@ -24,20 +25,18 @@ class RestApiTest : FunSpec({
         val client = OkHttp()
 
      //   val store =  Repository()
-        val demande = DemandeDuTicket(immatriculationVehicule = "imma", montantEuro = 5)
-        val useCase = AcheterUnTicketDeLocation(testableIdGenerateur())
+        val useCase = AcheterUnTicketDeLocation(LinearIdGenerator())  //testableIdGenerateur
 
         val server = httpServer(0, useCase)
-
         server.start()
 
         test("on passe par l'API pour générer un ticket") {
             val response = client(Request(Method.PUT,
-                "http://localhost:${server.port()}/parcemetre/ticket/5"
+                "http://localhost:${server.port()}/location/ticket/5"
             ))
             assertThat(response, hasStatus(OK).and(hasBody(
                 "{\"id\":\"\",\"heureEntree\":\"\",\"dureeDeLocation\":\"\",\"sommePayee\":\"\"}")))
-            //TODO: put real data in the response
+            //WIP: put real data in the response
         }
 
 

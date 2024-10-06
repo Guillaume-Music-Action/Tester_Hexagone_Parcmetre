@@ -11,6 +11,7 @@ import org.koin.dsl.module
 
 
 class App : KoinComponent {
+
     private val generateurId by inject<IJeDonneDesIdentifiants>()
 
     fun start() {
