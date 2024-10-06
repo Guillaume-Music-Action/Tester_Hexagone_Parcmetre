@@ -15,7 +15,7 @@ class SimpleUsesCasesTests : StringSpec({
     it often loads one or several aggregates and invokes business logic on them.*/
 
 
-    "l'utilisateur prend un ticket et celui est enregistré pour de bon" .config(enabled = false) {
+    "l'utilisateur prend un ticket et celui est enregistré pour de bon" .config(enabled = true) {
 
         val demande = DemandeDuTicket(immatriculationVehicule = "imma", montantEuro = 5)
         val useCase = AcheterUnTicketDeLocation()

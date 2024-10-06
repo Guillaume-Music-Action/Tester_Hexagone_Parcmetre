@@ -10,7 +10,7 @@ import location.domain.valueObjects.Monnaie
 private const val prixEnEurosPour30Minutes = 0.25
 private  val dureeTrancheHoraire = 30 * minutes
 
-class CentraleLocation(val Id: String, val generateurId: IJeDonneDesIdentifiants) {
+class CentraleLocation( val generateurId: IJeDonneDesIdentifiants) {
 
 
     fun CreerTicket(argent: Monnaie): Ticket  = Ticket(

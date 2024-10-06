@@ -16,7 +16,7 @@ class `2_TestParcmetre` : StringSpec({
 
 
     "je veux prendre un ticket au parcemetre pour 120 minutes" .config(enabled = true) {
-        val sut = CentraleLocation("", GenerateurLineaire() )
+        val sut = CentraleLocation( GenerateurLineaire() )
 
         val ticket  = sut.CreerTicket(argent =  Monnaie(1, Devises.EUROS))
 
@@ -24,7 +24,7 @@ class `2_TestParcmetre` : StringSpec({
     }
 
     "je veux prendre un ticket au parcemetre pour 240 minutes" .config(enabled = true) {
-        val sut = CentraleLocation("", GenerateurLineaire() )
+        val sut = CentraleLocation( GenerateurLineaire() )
 
         val ticket  = sut.CreerTicket(argent =  Monnaie(2, Devises.EUROS))
 
@@ -32,7 +32,7 @@ class `2_TestParcmetre` : StringSpec({
     }
 
     "deux tickets créés ont deux identificants distincts" .config(enabled = true) {
-        val sut = CentraleLocation("", GenerateurLineaire() )
+        val sut = CentraleLocation( GenerateurLineaire() )
 
         val ticket1  = sut.CreerTicket(argent =  Monnaie(2, Devises.EUROS))
         val ticket2  = sut.CreerTicket(argent =  Monnaie(2, Devises.EUROS))
@@ -42,15 +42,8 @@ class `2_TestParcmetre` : StringSpec({
     }
 
 
-
-
-
-
-
-
-
     "je veux prendre un ticket au parcemetre pour 30 minutes a la bonne heure" .config(enabled = false)  {
-        val parcmetre = CentraleLocation("00001", GenerateurLineaire() )
+        val parcmetre = CentraleLocation(GenerateurLineaire() )
 
         val ticket  = parcmetre.CreerTicket(duree = 30 * minutes)
 
