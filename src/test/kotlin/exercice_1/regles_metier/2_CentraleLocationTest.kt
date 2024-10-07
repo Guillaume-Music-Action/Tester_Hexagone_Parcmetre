@@ -6,7 +6,7 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.nacular.measured.units.Time.Companion.minutes
 import io.nacular.measured.units.times
-import location.domain.entities.CentraleLocation
+import location.domain.agregates.CentraleLocation
 import location.domain.valueObjects.Devises
 import location.domain.valueObjects.Monnaie
 import location.utilities.LinearIdGenerator
@@ -16,10 +16,12 @@ class `2_CentraleLocationTest` : StringSpec({
 
 
     "je veux prendre un ticket au parcemetre pour 120 minutes" .config(enabled = true) {
+
         val sut = CentraleLocation( LinearIdGenerator() )
 
         val ticket  = sut.CreerTicket(argent =  Monnaie(1, Devises.EUROS))
 
+        ticket.Id shouldBe "FAUX-ID-1"
         ticket.dureeDeLocation shouldBe   120 * minutes
     }
 
@@ -29,6 +31,7 @@ class `2_CentraleLocationTest` : StringSpec({
         val ticket  = sut.CreerTicket(argent =  Monnaie(2, Devises.EUROS))
 
         ticket.dureeDeLocation shouldBe   240 * minutes
+        ticket.Id shouldBe "FAUX-ID-1"
     }
 
     "deux tickets créés ont deux identificants distincts" .config(enabled = true) {

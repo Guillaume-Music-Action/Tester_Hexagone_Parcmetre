@@ -13,6 +13,7 @@ class PostGreAdaptorTest : StringSpec({
         val postgres = PostgreSQLContainer("postgres:16")
         postgres.start()
         val repo = TicketRepository(postgres.getJdbcUrl(), postgres.getUsername(), postgres.getPassword())
+
         repo.createTableTicket()
         repo.saveTicket(TicketDto(id = 1, elapseMinutes = 30))
         repo.saveTicket(TicketDto(id = 2, elapseMinutes = 18))

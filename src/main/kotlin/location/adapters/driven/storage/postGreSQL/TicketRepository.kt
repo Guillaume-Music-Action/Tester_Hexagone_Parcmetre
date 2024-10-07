@@ -6,6 +6,7 @@ import java.sql.DriverManager
 
 
 class TicketRepository(jdbcUrl: String, username: String, password: String) : ITicketRepository {
+
     private val storageConnection = DriverManager.getConnection(jdbcUrl, username, password)
 
 
@@ -36,7 +37,7 @@ class TicketRepository(jdbcUrl: String, username: String, password: String) : IT
         )
         val result = selectStatement.executeQuery()
         result.next()
-        var res = result.getInt("cardinalityTickets")
+        val res = result.getInt("cardinalityTickets")
         return Result.success(res)
     }
 

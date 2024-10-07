@@ -4,7 +4,7 @@ import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import location.behaviors.IJeDonneDesIdentifiants
 import location.behaviors.IRequestHandler
-import location.domain.entities.CentraleLocation
+import location.domain.agregates.CentraleLocation
 import location.domain.entities.Ticket
 import location.domain.valueObjects.Devises
 import location.domain.valueObjects.Monnaie

@@ -21,6 +21,7 @@ class InjectionDepencyTest : FunSpec(), KoinTest {
         test("use UlidGenerateur") {
 
             userService.idSuivant().length  shouldBe  26 //Ulid have 26 characters
+           // userService.idSuivant()  shouldBe  "01J9KQP70J6QF9VRY5N3W0MS85"
         }
     }
 
