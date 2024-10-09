@@ -6,7 +6,7 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.nacular.measured.units.Time.Companion.minutes
 import io.nacular.measured.units.times
-import location.domain.agregates.CentraleLocation
+import location.domain.agregates.BorneLocation
 import location.domain.valueObjects.Devises
 import location.domain.valueObjects.Monnaie
 import location.utilities.LinearIdGenerator
@@ -17,7 +17,7 @@ class `2_CentraleLocationTest` : StringSpec({
 
     "je veux prendre un ticket au parcemetre pour 120 minutes" .config(enabled = true) {
 
-        val sut = CentraleLocation( LinearIdGenerator() )
+        val sut = BorneLocation( LinearIdGenerator() )
 
         val ticket  = sut.CreerTicket(argent =  Monnaie(1, Devises.EUROS))
 
@@ -26,7 +26,7 @@ class `2_CentraleLocationTest` : StringSpec({
     }
 
     "je veux prendre un ticket au parcemetre pour 240 minutes" .config(enabled = true) {
-        val sut = CentraleLocation( LinearIdGenerator() )
+        val sut = BorneLocation( LinearIdGenerator() )
 
         val ticket  = sut.CreerTicket(argent =  Monnaie(2, Devises.EUROS))
 
@@ -35,7 +35,7 @@ class `2_CentraleLocationTest` : StringSpec({
     }
 
     "deux tickets créés ont deux identificants distincts" .config(enabled = true) {
-        val sut = CentraleLocation( LinearIdGenerator() )
+        val sut = BorneLocation( LinearIdGenerator() )
 
         val ticket1  = sut.CreerTicket(argent =  Monnaie(2, Devises.EUROS))
         val ticket2  = sut.CreerTicket(argent =  Monnaie(2, Devises.EUROS))
@@ -46,7 +46,7 @@ class `2_CentraleLocationTest` : StringSpec({
 
 
     "je veux prendre un ticket au parcemetre pour 30 minutes a la bonne heure" .config(enabled = false)  {
-        val parcmetre = CentraleLocation(LinearIdGenerator() )
+        val parcmetre = BorneLocation(LinearIdGenerator() )
 
         val ticket  = parcmetre.CreerTicket(duree = 30 * minutes)
 

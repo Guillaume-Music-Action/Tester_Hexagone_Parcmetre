@@ -12,7 +12,7 @@ private const val prixEnEurosPour30Minutes = 0.25
 private val dureeTrancheHoraire = 30 * minutes
 
 //que fait elle / quelles sont ses responsabilités ?
-class CentraleLocation( private val generateurId: IJeDonneDesIdentifiants) {
+class BorneLocation(private val generateurId: IJeDonneDesIdentifiants) {
 
 
     fun CreerTicket(argent: Monnaie) : Ticket = Ticket(

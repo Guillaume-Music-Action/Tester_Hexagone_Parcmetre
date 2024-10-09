@@ -27,7 +27,7 @@ class InjectionDepencyTest : FunSpec(), KoinTest {
 
 
     init {
-        val userService by inject<IJeDonneDesIdentifiants>(qualifier = named("test"))
+        val userService by inject<IJeDonneDesIdentifiants>(qualifier = named("deterministic"))
         test("use LinearIdGenerator") {
 
             userService.idSuivant()  shouldBe "FAUX-ID-1" //linear id renvoit toujours la meme

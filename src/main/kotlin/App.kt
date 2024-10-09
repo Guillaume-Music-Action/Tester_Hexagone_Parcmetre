@@ -30,7 +30,7 @@ class App : KoinComponent {
 
 val productionModule = module {
     single<IJeDonneDesIdentifiants>() { UlidGenerateur() }
-    single<IJeDonneDesIdentifiants>(named("test")) { LinearIdGenerator() }
+    single<IJeDonneDesIdentifiants>(named("deterministic")) { LinearIdGenerator() }
 }
 
 
