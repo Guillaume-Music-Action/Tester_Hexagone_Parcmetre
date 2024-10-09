@@ -35,30 +35,3 @@ class InjectionDepencyTest : FunSpec(), KoinTest {
         }
     }
 }
-
-
-
-/*
-class InjectionDepencyTest: KoinTest {
-
-    // Lazy inject property
-    val componentB: IJeDonneDesIdentifiants by inject()
-
-    @Test
-    fun `should inject my components`() {
-        startKoin {
-            modules(
-                module {
-                    single { GenerateurLineaire() }
-                    //  single { GenerateurLineaire(get()) }
-                })
-        }
-
-        // directly request an instance
-        val componentA = get<IJeDonneDesIdentifiants>()
-
-        componentA.shouldNotBeNull()
-        componentA.idSuivant() shouldBe "true"
-
-    }
-}*/

@@ -13,6 +13,7 @@ import location.domain.valueObjects.Monnaie
 class AcheterUnTicketDeLocation(val generateurId: IJeDonneDesIdentifiants ) :
     IRequestHandler<DemandeDuTicket, Result<Ticket>> {
 
+        // TODO: écrire la version synchrone (sans coroutine) 🤯🤯🤯
     override suspend fun handle(demande: DemandeDuTicket): Result<Ticket> = coroutineScope {
         println("on demarre le request handler, ca va prendre du temps")
 
