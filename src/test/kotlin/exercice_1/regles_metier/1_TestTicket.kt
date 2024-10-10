@@ -1,5 +1,6 @@
 package exercice_1.regles_metier
 
+import boundedContexts.capitalisme.valueObjects.Monnaie
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
@@ -17,7 +18,7 @@ class `1_TestTicket` : StringSpec(
     {
 
         "le ticket est là".config(enabled = true) {
-            var sut = Ticket("", 42 * minutes)
+            var sut = Ticket("", 42 * minutes, Monnaie.Zero())
             sut.dureeDeLocation shouldBe 42 * (60 * seconds)
         }
 

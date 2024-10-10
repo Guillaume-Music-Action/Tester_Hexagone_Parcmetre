@@ -1,4 +1,4 @@
-import location.adapters.driver.httpServer
+import adapters.driver.httpServer
 import location.behaviors.IJeDonneDesIdentifiants
 import location.useCases.AcheterUnTicketDeLocation
 import location.utilities.LinearIdGenerator

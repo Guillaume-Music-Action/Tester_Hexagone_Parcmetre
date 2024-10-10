@@ -1,4 +1,4 @@
-package location.adapters.driven
+package adapters.driven
 
 import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalDateTime

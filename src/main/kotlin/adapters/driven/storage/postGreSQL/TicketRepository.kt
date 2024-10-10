@@ -1,4 +1,4 @@
-package location.adapters.driven.storage.postGreSQL
+package adapters.driven.storage.postGreSQL
 
 import location.behaviors.ITicketRepository
 import location.models.DTOs.TicketDto

@@ -6,8 +6,8 @@ import location.behaviors.IJeDonneDesIdentifiants
 import location.behaviors.IRequestHandler
 import location.domain.agregates.BorneLocation
 import location.domain.entities.Ticket
-import location.domain.valueObjects.Devises
-import location.domain.valueObjects.Monnaie
+import boundedContexts.capitalisme.valueObjects.Devises
+import boundedContexts.capitalisme.valueObjects.Monnaie
 
 
 class AcheterUnTicketDeLocation(val generateurId: IJeDonneDesIdentifiants ) :
@@ -19,7 +19,7 @@ class AcheterUnTicketDeLocation(val generateurId: IJeDonneDesIdentifiants ) :
 
         //faire ici l'appel métier
         val centraleLocation = BorneLocation(generateurId)
-        val ticket = centraleLocation.CreerTicket(Monnaie(demande.montantEuro, Devises.EUROS))
+        val ticket = centraleLocation.EmettreTicket(Monnaie(demande.montantEuro, Devises.EUROS))
 
         //puis l'appel à l'adapter de stockage
         fauxAppelBaseDeDonnees(150) // c'est un exemple, dans la vraie vie on va appeler le stockage qui est "lent"

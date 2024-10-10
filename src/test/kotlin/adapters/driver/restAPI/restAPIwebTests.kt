@@ -4,7 +4,7 @@ package adapters.driver.restAPI
 import com.natpryce.hamkrest.and
 import com.natpryce.hamkrest.assertion.assertThat
 import io.kotest.core.spec.style.FunSpec
-import location.adapters.driver.httpServer
+import adapters.driver.httpServer
 import location.useCases.AcheterUnTicketDeLocation
 import location.utilities.LinearIdGenerator
 import org.http4k.client.OkHttp
