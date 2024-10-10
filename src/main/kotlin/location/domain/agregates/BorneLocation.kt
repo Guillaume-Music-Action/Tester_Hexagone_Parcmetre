@@ -1,11 +1,13 @@
 package location.domain.agregates
 
-import boundedContexts.capitalisme.valueObjects.Devises
-import boundedContexts.capitalisme.valueObjects.Monnaie
+//TODO: enlever cette dépendance et coder notre propre Value Object: "Durée"
 import io.nacular.measured.units.Measure
 import io.nacular.measured.units.Time
 import io.nacular.measured.units.Time.Companion.minutes
 import io.nacular.measured.units.times
+
+import boundedContexts.capitalisme.valueObjects.Devises
+import boundedContexts.capitalisme.valueObjects.Monnaie
 import location.behaviors.IJeDonneDesIdentifiants
 import location.domain.entities.Ticket
 
