@@ -6,16 +6,20 @@ import io.kotest.core.spec.style.BehaviorSpec
 
 data class Table(val number: Number, val capacite : Int )
 
-class MyTests : BehaviorSpec({
+class PlanDeTableTests : BehaviorSpec({
     context("je veux des tables equilibrées HF avec alternance au mieux") {
 
         given("1 table pour 12") {
            val table = Table(1, 12)
 
             `when`("j'ai 6 hommes et 6 femmes") {
-               // val table = Table()
+
+                var planDeTable=  table.Placer( Hommes(6),Femmes(6))
+
+
                 then("H et F sont en sequence alterné") {
-                    // test code
+
+                    planDeTable.AsString shouldEqual "1f - 1h - 1f - 1h -1f - 1h -1f - 1h"
 
                 }
             }
