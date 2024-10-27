@@ -1,5 +1,8 @@
 package boundedContexts.location.useCases
 
+import boundedContexts.location.behaviors.IRequestHandler
+import boundedContexts.location.domain.agregates.BorneLocation
+import boundedContexts.location.domain.entities.Ticket
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import boundedContexts.location.ports.IJeDonneDesIdentifiants
@@ -8,14 +11,14 @@ import boundedContexts.universel.valueObjects.Monnaie
 
 
 class AcheterUnTicketDeLocation(val generateurId: IJeDonneDesIdentifiants) :
-    boundedContexts.location.behaviors.IRequestHandler<boundedContexts.location.useCases.DemandeDuTicket, Result<boundedContexts.location.domain.entities.Ticket>> {
+    IRequestHandler<DemandeDuTicket, Result<Ticket>> {
 
-        // TODO: écrire la version synchrone (sans coroutine) 🤯🤯🤯
-    override suspend fun handle(demande: boundedContexts.location.useCases.DemandeDuTicket): Result<boundedContexts.location.domain.entities.Ticket> = coroutineScope {
+
+    override suspend fun handle(demande: DemandeDuTicket): Result<Ticket> = coroutineScope {
         println("on demarre le request handler, ca va prendre du temps")
 
         //faire ici l'appel métier
-        val centraleLocation = boundedContexts.location.domain.agregates.BorneLocation(generateurId)
+        val centraleLocation = BorneLocation(generateurId)
         val ticket = centraleLocation.EmettreTicket(Monnaie(demande.montantEuro, Devises.EUROS))
 
         //puis l'appel à l'adapter de stockage
