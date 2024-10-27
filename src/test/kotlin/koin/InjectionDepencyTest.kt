@@ -4,7 +4,7 @@ package koin
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.koin.KoinExtension
 import io.kotest.matchers.shouldBe
-import boundedContexts.location.behaviors.IJeDonneDesIdentifiants
+import boundedContexts.location.ports.IJeDonneDesIdentifiants
 import productionModule
 import org.koin.core.qualifier.named
 import org.koin.test.KoinTest
@@ -17,7 +17,7 @@ class InjectionDepencyTest : FunSpec(), KoinTest {
 
 
     init {
-        val userService by inject<boundedContexts.location.behaviors.IJeDonneDesIdentifiants>( )
+        val userService by inject<IJeDonneDesIdentifiants>( )
         test("use UlidGenerateur") {
 
             userService.idSuivant().length  shouldBe  26 //Ulid have 26 characters
@@ -27,7 +27,7 @@ class InjectionDepencyTest : FunSpec(), KoinTest {
 
 
     init {
-        val userService by inject<boundedContexts.location.behaviors.IJeDonneDesIdentifiants>(qualifier = named("deterministic"))
+        val userService by inject<IJeDonneDesIdentifiants>(qualifier = named("deterministic"))
         test("use LinearIdGenerator") {
 
             userService.idSuivant()  shouldBe "FAUX-ID-1" //linear id renvoit toujours la meme

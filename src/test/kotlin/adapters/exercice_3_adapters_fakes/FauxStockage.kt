@@ -1,10 +1,8 @@
 package adapters.exercice_3_adapters_fakes
 
-import boundedContexts.location.behaviors.ITicketRepository
+import boundedContexts.location.ports.ITicketRepository
 
-import boundedContexts.location.models.DTOs.TicketDto
-
-class FauxStockage : boundedContexts.location.behaviors.ITicketRepository {
+class FauxStockage : ITicketRepository {
 
     val listDesTickets = mutableListOf<boundedContexts.location.models.DTOs.TicketDto>()
 

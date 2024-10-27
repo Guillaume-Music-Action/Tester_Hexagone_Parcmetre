@@ -2,15 +2,12 @@ package boundedContexts.location.useCases
 
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
-import boundedContexts.location.behaviors.IJeDonneDesIdentifiants
-import boundedContexts.location.behaviors.IRequestHandler
-import boundedContexts.location.domain.agregates.BorneLocation
-import boundedContexts.location.domain.entities.Ticket
+import boundedContexts.location.ports.IJeDonneDesIdentifiants
 import boundedContexts.universel.valueObjects.Devises
 import boundedContexts.universel.valueObjects.Monnaie
 
 
-class AcheterUnTicketDeLocation(val generateurId: boundedContexts.location.behaviors.IJeDonneDesIdentifiants) :
+class AcheterUnTicketDeLocation(val generateurId: IJeDonneDesIdentifiants) :
     boundedContexts.location.behaviors.IRequestHandler<boundedContexts.location.useCases.DemandeDuTicket, Result<boundedContexts.location.domain.entities.Ticket>> {
 
         // TODO: écrire la version synchrone (sans coroutine) 🤯🤯🤯

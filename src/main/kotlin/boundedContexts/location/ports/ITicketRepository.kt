@@ -1,6 +1,4 @@
-package boundedContexts.location.behaviors
-
-import boundedContexts.location.models.DTOs.TicketDto
+package boundedContexts.location.ports
 
 interface ITicketRepository {
     fun saveTicket(ticket: boundedContexts.location.models.DTOs.TicketDto): Result<Boolean>

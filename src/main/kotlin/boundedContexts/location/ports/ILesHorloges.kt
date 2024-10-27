@@ -1,4 +1,4 @@
-package boundedContexts.location.behaviors
+package boundedContexts.location.ports
 
 import kotlinx.datetime.LocalDateTime
 

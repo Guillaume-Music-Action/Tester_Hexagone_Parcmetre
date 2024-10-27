@@ -8,15 +8,14 @@ import io.nacular.measured.units.times
 
 import boundedContexts.universel.valueObjects.Devises
 import boundedContexts.universel.valueObjects.Monnaie
-import boundedContexts.location.behaviors.IJeDonneDesIdentifiants
-import boundedContexts.location.domain.entities.Ticket
+import boundedContexts.location.ports.IJeDonneDesIdentifiants
 
 private const val prixEnEurosPour30Minutes = 0.25
 private val dureeTrancheHoraire = 30 * minutes
 private val dureeTrancheHoraireMinutes = 30
 
 //que fait elle / quelles sont ses responsabilités ?
-class BorneLocation(private val generateurId: boundedContexts.location.behaviors.IJeDonneDesIdentifiants) {
+class BorneLocation(private val generateurId: IJeDonneDesIdentifiants) {
 
 
     fun EmettreTicket(argent: Monnaie): boundedContexts.location.domain.entities.Ticket =

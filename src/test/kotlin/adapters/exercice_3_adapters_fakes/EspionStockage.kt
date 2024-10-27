@@ -1,9 +1,8 @@
 package adapters.exercice_3_adapters_fakes
 
-import boundedContexts.location.behaviors.ITicketRepository
-import boundedContexts.location.models.DTOs.TicketDto
+import boundedContexts.location.ports.ITicketRepository
 
-class EspionStockage : boundedContexts.location.behaviors.ITicketRepository {
+class EspionStockage : ITicketRepository {
     override fun saveTicket(ticket: boundedContexts.location.models.DTOs.TicketDto): Result<Boolean> {
        return Result.success(true)
     }

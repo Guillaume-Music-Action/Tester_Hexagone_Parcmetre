@@ -1,12 +1,11 @@
 package adapters.driven.storage.postGreSQL
 
-import boundedContexts.location.behaviors.ITicketRepository
-import boundedContexts.location.models.DTOs.TicketDto
+import boundedContexts.location.ports.ITicketRepository
 import java.sql.DriverManager
 
 
 class TicketRepository(jdbcUrl: String, username: String, password: String) :
-    boundedContexts.location.behaviors.ITicketRepository {
+    ITicketRepository {
 
     private val storageConnection = DriverManager.getConnection(jdbcUrl, username, password)
 
