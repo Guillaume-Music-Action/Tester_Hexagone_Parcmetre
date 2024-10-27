@@ -68,7 +68,7 @@ dependencies {
     implementation("org.http4k:http4k-client-okhttp")
     implementation("org.http4k:http4k-testing-hamkrest")
 
-
+    implementation ("org.postgresql:postgresql:42.7.4")
 
     // retrofit
     testImplementation 'com.squareup.retrofit2:retrofit:2.11.0'

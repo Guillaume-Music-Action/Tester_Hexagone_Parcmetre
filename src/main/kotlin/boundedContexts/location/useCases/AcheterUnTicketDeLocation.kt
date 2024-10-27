@@ -3,14 +3,16 @@ package boundedContexts.location.useCases
 import boundedContexts.location.behaviors.IRequestHandler
 import boundedContexts.location.domain.agregates.BorneLocation
 import boundedContexts.location.domain.entities.Ticket
+import boundedContexts.location.models.DTOs.TicketDto
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import boundedContexts.location.ports.IJeDonneDesIdentifiants
+import boundedContexts.location.ports.ITicketRepository
 import boundedContexts.universel.valueObjects.Devises
 import boundedContexts.universel.valueObjects.Monnaie
 
 
-class AcheterUnTicketDeLocation(val generateurId: IJeDonneDesIdentifiants) :
+class AcheterUnTicketDeLocation(val generateurId: IJeDonneDesIdentifiants, val dataAdapter: ITicketRepository) :
     IRequestHandler<DemandeDuTicket, Result<Ticket>> {
 
 
@@ -22,9 +24,10 @@ class AcheterUnTicketDeLocation(val generateurId: IJeDonneDesIdentifiants) :
         val ticket = centraleLocation.EmettreTicket(Monnaie(demande.montantEuro, Devises.EUROS))
 
         //puis l'appel à l'adapter de stockage
-        fauxAppelBaseDeDonnees(150) // c'est un exemple, dans la vraie vie on va appeler le stockage qui est "lent"
+        var ticketDto = TicketDto(ticket.Id, ticket.dureeDeLocation.amount.toInt() )
+        dataAdapter.saveTicket(ticketDto)
 
-        // Block Body Lambda If the lambda body contains multiple statements, the last expression is returned implicitly.
+
         Result.success(ticket)
         //Result.failure(TODO("faites passer ce test au vert"))
     }

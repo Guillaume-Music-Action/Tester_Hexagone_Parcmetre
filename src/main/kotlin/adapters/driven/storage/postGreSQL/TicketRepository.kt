@@ -13,9 +13,9 @@ class TicketRepository(jdbcUrl: String, username: String, password: String) :
     fun createTableTicket() = runCatching {
         val createTableStatement = storageConnection.prepareStatement(
             """ 
-                create table if not exists ticket(
-                    id decimal(8) primary key,
-                    park_time_minutes decimal(4,0)
+                  CREATE TABLE IF NOT EXISTS ticket (
+        id VARCHAR PRIMARY KEY,
+        park_time_minutes DECIMAL(4, 0)
                 )
             """.trimIndent()
         )
@@ -26,7 +26,7 @@ class TicketRepository(jdbcUrl: String, username: String, password: String) :
         val insertStatement = storageConnection.prepareStatement(
             "insert into ticket(id, park_time_minutes) values (?, ?)"
         )
-        insertStatement.setInt(1, ticket.id)
+        insertStatement.setString(1, ticket.id)
         insertStatement.setInt(2, ticket.elapseMinutes)
         insertStatement.execute()
     }
@@ -43,5 +43,9 @@ class TicketRepository(jdbcUrl: String, username: String, password: String) :
 
     override fun getTickets(): Result<List<boundedContexts.location.models.DTOs.TicketDto>> {
         TODO("Not yet implemented")
+    }
+
+    override fun start() {
+       createTableTicket()
     }
 }

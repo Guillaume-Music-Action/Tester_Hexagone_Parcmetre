@@ -12,11 +12,13 @@ class PostGreAdaptorTest : StringSpec({
         // Arrange
         val postgres = PostgreSQLContainer("postgres:16")
         postgres.start()
-        val repo = TicketRepository(postgres.getJdbcUrl(), postgres.getUsername(), postgres.getPassword())
+        val userName = postgres.getUsername()
+        val password = postgres.getPassword()
+        val repo = TicketRepository(postgres.getJdbcUrl(), userName, password)
 
         repo.createTableTicket()
-        repo.saveTicket(boundedContexts.location.models.DTOs.TicketDto(id = 1, elapseMinutes = 30))
-        repo.saveTicket(boundedContexts.location.models.DTOs.TicketDto(id = 2, elapseMinutes = 18))
+        repo.saveTicket(boundedContexts.location.models.DTOs.TicketDto(id = "1", elapseMinutes = 30))
+        repo.saveTicket(boundedContexts.location.models.DTOs.TicketDto(id = "2", elapseMinutes = 18))
 
         // Act
         val countTickets = repo.cardinalityTickets()

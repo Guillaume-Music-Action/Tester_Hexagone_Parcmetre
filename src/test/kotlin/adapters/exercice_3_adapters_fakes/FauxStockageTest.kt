@@ -7,7 +7,7 @@ import boundedContexts.location.models.DTOs.TicketDto
 
 class FauxStockageTest : FunSpec({
 
-    val testTicket = boundedContexts.location.models.DTOs.TicketDto(1, 2)
+    val testTicket = boundedContexts.location.models.DTOs.TicketDto("1", 2)
     val fauxStockageFactory = {  -> FauxStockage()}
 
         include( StorageSharedTests.storageSaveAndCount(stockage = fauxStockageFactory()))
