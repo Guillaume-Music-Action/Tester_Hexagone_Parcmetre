@@ -24,7 +24,7 @@ class AcheterUnTicketDeLocation(val generateurId: IJeDonneDesIdentifiants, val d
         val ticket = centraleLocation.EmettreTicket(Monnaie(demande.montantEuro, Devises.EUROS))
 
         //puis l'appel à l'adapter de stockage
-        var ticketDto = TicketDto(ticket.Id, ticket.dureeDeLocation.amount.toInt() )
+        var ticketDto = TicketDto(id = ticket.Id, amountOfMinutes = ticket.dureeDeLocation.amount.toInt())
         dataAdapter.saveTicket(ticketDto)
 
 

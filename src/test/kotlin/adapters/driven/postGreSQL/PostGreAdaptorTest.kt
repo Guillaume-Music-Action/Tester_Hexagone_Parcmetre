@@ -4,7 +4,6 @@ import io.kotest.core.spec.style.StringSpec
 import org.testcontainers.containers.PostgreSQLContainer
 import io.kotest.matchers.*
 import adapters.driven.storage.postGreSQL.TicketRepository
-import boundedContexts.location.models.DTOs.TicketDto
 
 class PostGreAdaptorTest : StringSpec({
 
@@ -17,9 +16,9 @@ class PostGreAdaptorTest : StringSpec({
         val repo = TicketRepository(postgres.getJdbcUrl(), userName, password)
 
         repo.createTableTicket()
-        val r1  =repo.saveTicket(boundedContexts.location.models.DTOs.TicketDto(id = "1", elapseMinutes = 30))
+        val r1  =repo.saveTicket(boundedContexts.location.models.DTOs.TicketDto(id = "1", amountOfMinutes = 30))
         r1.isSuccess  shouldBe  true
-        val r2 = repo.saveTicket(boundedContexts.location.models.DTOs.TicketDto(id = "2", elapseMinutes = 18))
+        val r2 = repo.saveTicket(boundedContexts.location.models.DTOs.TicketDto(id = "2", amountOfMinutes = 18))
         r2.isSuccess  shouldBe true
         //val r3 = repo.saveTicket(boundedContexts.location.models.DTOs.TicketDto(id = "2Z", elapseMinutes = 445554541))
         //r3.isFailure  shouldBe false

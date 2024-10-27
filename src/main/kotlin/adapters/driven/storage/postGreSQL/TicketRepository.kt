@@ -27,7 +27,7 @@ class TicketRepository(jdbcUrl: String, username: String, password: String) :
             "insert into ticket(id, park_time_minutes) values (?, ?)"
         )
         insertStatement.setString(1, ticket.id)
-        insertStatement.setInt(2, ticket.elapseMinutes)
+        insertStatement.setInt(2, ticket.amountOfMinutes)
         insertStatement.execute()
     }
 
