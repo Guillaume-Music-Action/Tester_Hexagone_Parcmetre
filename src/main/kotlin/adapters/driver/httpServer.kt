@@ -28,7 +28,7 @@ fun httpServer(port: Int, useCaseReadBalance: boundedContexts.location.useCases.
 
 fun locationHttpHandler(useCase: boundedContexts.location.useCases.AcheterUnTicketDeLocation): HttpHandler = CatchLensFailure.then(
     routes(
-        "/boundedContexts/location/ticket/{sommePayee}" bind Method.PUT to { request: Request ->
+        "/location/ticket/{sommePayee}" bind Method.PUT to { request: Request ->
             //   val accountIdRequest = Query.string().required(name = "sommePayee")
             val sommePayee = request.path("sommePayee")!!
 

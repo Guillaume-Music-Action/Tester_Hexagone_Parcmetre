@@ -38,9 +38,9 @@ class RestApiTest : FunSpec({
             assertThat(
                 response, hasStatus(OK).and(
                     hasBody(
-                        "{\"id\":\"\",\"heureEntree\":\"\",\"dureeDeLocation\":\"\",\"sommePayee\":\"\"}"
+                        "{\"id\":\"FAUX-ID-1\",\"heureEntree\":\"\",\"dureeDeLocation\":\"600.0 min\",\"sommePayee\":\"5\"}"
                     )))
-            //WIP: put real data in the response
+
         }
 
         test("un ticket a été demandé, on doit pouvoir demander à l'API de le retrouver").config(enabled = false) {
