@@ -6,8 +6,8 @@ import io.nacular.measured.units.Time
 import io.nacular.measured.units.Time.Companion.minutes
 import io.nacular.measured.units.times
 
-import boundedContexts.capitalisme.valueObjects.Devises
-import boundedContexts.capitalisme.valueObjects.Monnaie
+import boundedContexts.universel.valueObjects.Devises
+import boundedContexts.universel.valueObjects.Monnaie
 import location.behaviors.IJeDonneDesIdentifiants
 import location.domain.entities.Ticket
 
@@ -30,7 +30,7 @@ class BorneLocation(private val generateurId: IJeDonneDesIdentifiants) {
         Id = generateurId.idSuivant(),
         dureeDeLocation = duree,
         prix = when {
-            duree.amount <= 240 -> Monnaie(
+            duree <=  240 * minutes -> Monnaie(
                 ((duree / dureeTrancheHoraireMinutes) * prixEnEurosPour30Minutes).amount.toInt(),
                 Devises.EUROS                )
             else -> Monnaie(4, Devises.EUROS)

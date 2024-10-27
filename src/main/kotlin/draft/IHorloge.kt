@@ -1,6 +1,7 @@
 package draft
 
-import java.time.LocalDateTime
+import kotlinx.datetime.LocalDateTime
+
 
 interface IHorloge {
     fun Maintenant(): LocalDateTime

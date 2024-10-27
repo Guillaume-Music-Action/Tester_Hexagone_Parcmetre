@@ -1,6 +1,6 @@
 package location.domain.entities
 
-import boundedContexts.capitalisme.valueObjects.Monnaie
+import boundedContexts.universel.valueObjects.Monnaie
 import io.nacular.measured.units.Measure
 import io.nacular.measured.units.Time
 

@@ -1,6 +1,6 @@
 package exercice_1.regles_metier
 
-import boundedContexts.capitalisme.valueObjects.Monnaie
+import boundedContexts.universel.valueObjects.Monnaie
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe

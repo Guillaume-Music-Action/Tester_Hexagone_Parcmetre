@@ -1,8 +1,12 @@
 package draft
 
-import java.time.LocalDateTime
+import kotlinx.datetime.DateTimeUnit
+import kotlinx.datetime.LocalDateTime
+
+
 
 class Ticket(immatriculation: String, sommePayee: Double, horlogeEntree: IHorloge) {
 
-    val DateHeureSortie: LocalDateTime = horlogeEntree.Maintenant().plusHours((sommePayee * 2).toLong())
+ //   val DateHeureSortie: LocalDateTime = horlogeEntree.Maintenant().hour.plus(sommePayee *2, DateTimeUnit.HOUR)
+
 }

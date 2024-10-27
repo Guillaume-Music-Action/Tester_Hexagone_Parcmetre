@@ -6,8 +6,8 @@ import location.behaviors.IJeDonneDesIdentifiants
 import location.behaviors.IRequestHandler
 import location.domain.agregates.BorneLocation
 import location.domain.entities.Ticket
-import boundedContexts.capitalisme.valueObjects.Devises
-import boundedContexts.capitalisme.valueObjects.Monnaie
+import boundedContexts.universel.valueObjects.Devises
+import boundedContexts.universel.valueObjects.Monnaie
 
 
 class AcheterUnTicketDeLocation(val generateurId: IJeDonneDesIdentifiants ) :

@@ -1,4 +1,4 @@
-package boundedContexts.capitalisme.valueObjects
+package boundedContexts.universel.valueObjects
 
 data class Monnaie(val valeur: Int, val devise: Devises) {
 
@@ -6,7 +6,7 @@ data class Monnaie(val valeur: Int, val devise: Devises) {
         const val DOLLAR_VERS_EUROS = 2
         fun Euros(value: Int): Monnaie = Monnaie(value, Devises.EUROS)
         fun Dollars(value: Int): Monnaie = Monnaie(value, Devises.DOLLARS)
-        fun Zero(): Monnaie  = Monnaie(0, Devises.EUROS)
+        fun Zero(): Monnaie = Monnaie(0, Devises.EUROS)
     }
 
 

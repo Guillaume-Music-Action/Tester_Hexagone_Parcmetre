@@ -7,8 +7,8 @@ import io.kotest.matchers.shouldNotBe
 import io.nacular.measured.units.Time.Companion.minutes
 import io.nacular.measured.units.times
 import location.domain.agregates.BorneLocation
-import boundedContexts.capitalisme.valueObjects.Devises
-import boundedContexts.capitalisme.valueObjects.Monnaie
+import boundedContexts.universel.valueObjects.Devises
+import boundedContexts.universel.valueObjects.Monnaie
 import io.nacular.measured.units.Time.Companion.hours
 import location.utilities.LinearIdGenerator
 
@@ -49,9 +49,11 @@ class `2_CentraleLocationTest` : StringSpec({
 
     "au delà de 4 heures on paye 4 euros" .config(enabled = true) {
         val sut = BorneLocation( LinearIdGenerator() )
-        val ticket  = sut.EmettreTicket(duree = 300 * minutes )
+        val ticket  = sut.EmettreTicket(duree = 5 * hours )
 
         ticket.dureeDeLocation shouldBe  300 * minutes
+        ticket.dureeDeLocation shouldBe  5 * hours
+
         ticket.dureeDeLocation.amount shouldBe 300
         ticket.prix shouldBe  Monnaie(4, Devises.EUROS)
     }
