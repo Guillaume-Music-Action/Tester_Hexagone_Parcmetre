@@ -21,7 +21,7 @@ class PostGreAdaptorTest : StringSpec({
         r1.isSuccess  shouldBe  true
         val r2 = repo.saveTicket(boundedContexts.location.models.DTOs.TicketDto(id = "2", elapseMinutes = 18))
         r2.isSuccess  shouldBe true
-        //val r3 = repo.saveTicket(boundedContexts.location.models.DTOs.TicketDto(id = "2zzzzz", elapseMinutes = 445))
+        //val r3 = repo.saveTicket(boundedContexts.location.models.DTOs.TicketDto(id = "2Z", elapseMinutes = 445554541))
         //r3.isFailure  shouldBe false
 
         // Act
