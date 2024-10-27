@@ -12,7 +12,7 @@ import org.koin.dsl.module
 fun main() {
     startKoin {
         printLogger()
-        modules(productionModule)
+        modules(developperMode)
     }
     App().start()
 }
@@ -28,8 +28,7 @@ class App : KoinComponent {
     }
 }
 
-
-val productionModule = module {
+val developperMode = module {
     single<IJeDonneDesIdentifiants>() { boundedContexts.location.utilities.UlidGenerateur() }
     single<IJeDonneDesIdentifiants>(named("deterministic")) { boundedContexts.location.utilities.LinearIdGenerator() }
 
@@ -37,7 +36,14 @@ val productionModule = module {
         "example" ) }
 }
 
+val productionMode = module {
+    single<IJeDonneDesIdentifiants>() { boundedContexts.location.utilities.UlidGenerateur() }
+
+    single<ITicketRepository> {  TicketRepository( "jdbc:postgresql://instance001:5432/prodBase", "SECRET",
+        "SECRET" ) }
+}
 
 val testModule = module {
     single<IJeDonneDesIdentifiants> { boundedContexts.location.utilities.LinearIdGenerator() }
+    // single<ITicketRepository> {  FauxStockage()    }
 }

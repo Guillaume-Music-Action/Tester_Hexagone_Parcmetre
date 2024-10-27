@@ -5,7 +5,7 @@ import io.kotest.core.spec.style.FunSpec
 import io.kotest.koin.KoinExtension
 import io.kotest.matchers.shouldBe
 import boundedContexts.location.ports.IJeDonneDesIdentifiants
-import productionModule
+import developperMode
 import org.koin.core.qualifier.named
 import org.koin.test.KoinTest
 import org.koin.test.inject
@@ -13,7 +13,7 @@ import org.koin.test.inject
 
 class InjectionDepencyTest : FunSpec(), KoinTest {
 
-    override fun extensions() = listOf(KoinExtension(productionModule))
+    override fun extensions() = listOf(KoinExtension(developperMode))
 
 
     init {
