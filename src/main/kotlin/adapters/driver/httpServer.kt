@@ -2,9 +2,6 @@ package adapters.driver
 
 
 import kotlinx.coroutines.runBlocking
-import location.domain.entities.Ticket
-import location.useCases.AcheterUnTicketDeLocation
-import location.useCases.DemandeDuTicket
 import org.http4k.core.*
 import org.http4k.core.Status.Companion.I_M_A_TEAPOT
 import org.http4k.core.Status.Companion.OK
@@ -26,12 +23,12 @@ data class TicketDTO(
 )
 
 
-fun httpServer(port: Int, useCaseReadBalance: AcheterUnTicketDeLocation): Http4kServer =
+fun httpServer(port: Int, useCaseReadBalance: boundedContexts.location.useCases.AcheterUnTicketDeLocation): Http4kServer =
     locationHttpHandler(useCaseReadBalance).asServer(Jetty(port))
 
-fun locationHttpHandler(useCase: AcheterUnTicketDeLocation): HttpHandler = CatchLensFailure.then(
+fun locationHttpHandler(useCase: boundedContexts.location.useCases.AcheterUnTicketDeLocation): HttpHandler = CatchLensFailure.then(
     routes(
-        "/location/ticket/{sommePayee}" bind Method.PUT to { request: Request ->
+        "/boundedContexts/location/ticket/{sommePayee}" bind Method.PUT to { request: Request ->
             //   val accountIdRequest = Query.string().required(name = "sommePayee")
             val sommePayee = request.path("sommePayee")!!
 
@@ -39,12 +36,12 @@ fun locationHttpHandler(useCase: AcheterUnTicketDeLocation): HttpHandler = Catch
             when (val parsedAmount = sommePayee.toIntOrNull()) {
                 null -> Response(I_M_A_TEAPOT)
                 else -> {
-                    val demande = DemandeDuTicket(
+                    val demande = boundedContexts.location.useCases.DemandeDuTicket(
                         immatriculationVehicule = "",
                         montantEuro = parsedAmount
                     )
 
-                    var reponse: Result<Ticket>
+                    var reponse: Result<boundedContexts.location.domain.entities.Ticket>
                     runBlocking {
                         //to get asynchronous, we need to use Loom https://www.javaadvent.com/2022/12/asynchronous-functional-web-server-in-kotlin.html
                         reponse = useCase.handle(demande)

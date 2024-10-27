@@ -3,11 +3,11 @@ package adapters.exercice_3_adapters_fakes
 import adapters.StorageSharedTests
 import io.kotest.core.spec.style.FunSpec
 import io.kotest.matchers.shouldBe
-import location.models.DTOs.TicketDto
+import boundedContexts.location.models.DTOs.TicketDto
 
 class FauxStockageTest : FunSpec({
 
-    val testTicket = TicketDto(1, 2)
+    val testTicket = boundedContexts.location.models.DTOs.TicketDto(1, 2)
     val fauxStockageFactory = {  -> FauxStockage()}
 
         include( StorageSharedTests.storageSaveAndCount(stockage = fauxStockageFactory()))

@@ -1,8 +1,8 @@
 import adapters.driver.httpServer
-import location.behaviors.IJeDonneDesIdentifiants
-import location.useCases.AcheterUnTicketDeLocation
-import location.utilities.LinearIdGenerator
-import location.utilities.UlidGenerateur
+import boundedContexts.location.behaviors.IJeDonneDesIdentifiants
+import boundedContexts.location.useCases.AcheterUnTicketDeLocation
+import boundedContexts.location.utilities.LinearIdGenerator
+import boundedContexts.location.utilities.UlidGenerateur
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.context.startKoin
@@ -19,21 +19,21 @@ fun main() {
 }
 
 class App : KoinComponent {
-    private val generateurId by inject<IJeDonneDesIdentifiants>()
+    private val generateurId by inject<boundedContexts.location.behaviors.IJeDonneDesIdentifiants>()
 
     fun start() {
-        httpServer(8818, AcheterUnTicketDeLocation(generateurId))
+        httpServer(8818, boundedContexts.location.useCases.AcheterUnTicketDeLocation(generateurId))
             .start()
     }
 }
 
 
 val productionModule = module {
-    single<IJeDonneDesIdentifiants>() { UlidGenerateur() }
-    single<IJeDonneDesIdentifiants>(named("deterministic")) { LinearIdGenerator() }
+    single<boundedContexts.location.behaviors.IJeDonneDesIdentifiants>() { boundedContexts.location.utilities.UlidGenerateur() }
+    single<boundedContexts.location.behaviors.IJeDonneDesIdentifiants>(named("deterministic")) { boundedContexts.location.utilities.LinearIdGenerator() }
 }
 
 
 val testModule = module {
-    single<IJeDonneDesIdentifiants> { LinearIdGenerator() }
+    single<boundedContexts.location.behaviors.IJeDonneDesIdentifiants> { boundedContexts.location.utilities.LinearIdGenerator() }
 }

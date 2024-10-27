@@ -1,4 +1,4 @@
-package location.behaviors
+package boundedContexts.location.behaviors
 
 interface IRequestHandler<Tin, Tout> {
 

@@ -1,3 +1,3 @@
-package location.models.DTOs
+package boundedContexts.location.models.DTOs
 
 data class TicketDto(val id: Int, val elapseMinutes: Int)

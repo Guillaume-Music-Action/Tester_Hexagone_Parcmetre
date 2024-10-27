@@ -9,23 +9,24 @@ import io.nacular.measured.units.Time.Companion.minutes
 import io.nacular.measured.units.Time.Companion.seconds
 import io.nacular.measured.units.times
 import kotlinx.datetime.LocalDateTime
-import location.domain.entities.Ticket
-import location.domain.entities.UsineDeTickets
-import location.utilities.UlidGenerateur
-import location.utilities.ulidGenerateur
+import boundedContexts.location.domain.entities.Ticket
+import boundedContexts.location.domain.entities.UsineDeTickets
+import boundedContexts.location.utilities.UlidGenerateur
+import boundedContexts.location.utilities.ulidGenerateur
 
 class `1_TestTicket` : StringSpec(
     {
 
         "le ticket est là".config(enabled = true) {
-            var sut = Ticket("", 42 * minutes, Monnaie.Zero())
+            var sut = boundedContexts.location.domain.entities.Ticket("", 42 * minutes, Monnaie.Zero())
             sut.dureeDeLocation shouldBe 42 * (60 * seconds)
         }
 
         "le ticket doit avoir un generateur qui s'occupe de l'ID".config(enabled = true) {
             // remplacer IdGenerateur par un fake+spy  (ca veut dire un contrat derriere => ULID.Suivant())
             // montrer comment hors du test, c'est un UlidGenerateur qui va prendre la place
-            var ticketGenerateur = UsineDeTickets(ulidGenerateur)
+            var ticketGenerateur =
+                boundedContexts.location.domain.entities.UsineDeTickets(boundedContexts.location.utilities.ulidGenerateur)
 
             val ticket = ticketGenerateur.Creation(
                 LocalDateTime(2016, 2, 15, 16, 57, 0, 0),
@@ -43,7 +44,8 @@ class `1_TestTicket` : StringSpec(
         "le ticket doit avoir un generateur qui s'occupe de l'ID et garanti que un 2e ticket possede un Id different"
             .config(enabled = true) {
 
-                var ticketGenerateur = UsineDeTickets(ulidGenerateur)
+                var ticketGenerateur =
+                    boundedContexts.location.domain.entities.UsineDeTickets(boundedContexts.location.utilities.ulidGenerateur)
 
                 val ticket1 = ticketGenerateur.Creation(
                     LocalDateTime(2016, 2, 15, 16, 57, 0, 0),

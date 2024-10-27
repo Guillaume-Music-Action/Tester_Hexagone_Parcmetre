@@ -5,10 +5,10 @@ import io.kotest.matchers.result.shouldBeSuccess
 import io.kotest.matchers.shouldNotBe
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
-import location.useCases.AcheterUnTicketDeLocation
-import location.useCases.DemandeDuTicket
-import location.utilities.LinearIdGenerator
-import location.utilities.testableIdGenerateur
+import boundedContexts.location.useCases.AcheterUnTicketDeLocation
+import boundedContexts.location.useCases.DemandeDuTicket
+import boundedContexts.location.utilities.LinearIdGenerator
+import boundedContexts.location.utilities.testableIdGenerateur
 
 
 class SimpleUsesCasesTests : StringSpec({
@@ -19,8 +19,10 @@ class SimpleUsesCasesTests : StringSpec({
 
     "l'utilisateur prend un ticket et celui est enregistré pour de bon" .config(enabled = true) {
 
-        val demande = DemandeDuTicket(immatriculationVehicule = "imma", montantEuro = 5)
-        val useCase = AcheterUnTicketDeLocation( generateurId = LinearIdGenerator()  )
+        val demande =
+            boundedContexts.location.useCases.DemandeDuTicket(immatriculationVehicule = "imma", montantEuro = 5)
+        val useCase =
+            boundedContexts.location.useCases.AcheterUnTicketDeLocation(generateurId = boundedContexts.location.utilities.LinearIdGenerator())
 
         coroutineScope {
 

@@ -6,11 +6,11 @@ import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 import io.nacular.measured.units.Time.Companion.minutes
 import io.nacular.measured.units.times
-import location.domain.agregates.BorneLocation
+import boundedContexts.location.domain.agregates.BorneLocation
 import boundedContexts.universel.valueObjects.Devises
 import boundedContexts.universel.valueObjects.Monnaie
 import io.nacular.measured.units.Time.Companion.hours
-import location.utilities.LinearIdGenerator
+import boundedContexts.location.utilities.LinearIdGenerator
 
 @AutoScan
 class `2_CentraleLocationTest` : StringSpec({
@@ -18,7 +18,8 @@ class `2_CentraleLocationTest` : StringSpec({
 
     "je veux prendre un ticket au parcemetre pour 120 minutes" .config(enabled = true) {
 
-        val sut = BorneLocation( LinearIdGenerator() )
+        val sut =
+            boundedContexts.location.domain.agregates.BorneLocation(boundedContexts.location.utilities.LinearIdGenerator())
 
         val ticket  = sut.EmettreTicket(argent =  Monnaie(1, Devises.EUROS))
 
@@ -27,7 +28,8 @@ class `2_CentraleLocationTest` : StringSpec({
     }
 
     "je veux prendre un ticket au parcemetre pour 240 minutes" .config(enabled = true) {
-        val sut = BorneLocation( LinearIdGenerator() )
+        val sut =
+            boundedContexts.location.domain.agregates.BorneLocation(boundedContexts.location.utilities.LinearIdGenerator())
 
         val ticket  = sut.EmettreTicket(argent =  Monnaie(2, Devises.EUROS))
 
@@ -36,7 +38,8 @@ class `2_CentraleLocationTest` : StringSpec({
     }
 
     "deux tickets créés ont deux identificants distincts" .config(enabled = true) {
-        val sut = BorneLocation( LinearIdGenerator() )
+        val sut =
+            boundedContexts.location.domain.agregates.BorneLocation(boundedContexts.location.utilities.LinearIdGenerator())
 
         val ticket1  = sut.EmettreTicket(argent =  Monnaie(2, Devises.EUROS))
         val ticket2  = sut.EmettreTicket(argent =  Monnaie(2, Devises.EUROS))
@@ -48,7 +51,8 @@ class `2_CentraleLocationTest` : StringSpec({
 
 
     "au delà de 4 heures on paye 4 euros" .config(enabled = true) {
-        val sut = BorneLocation( LinearIdGenerator() )
+        val sut =
+            boundedContexts.location.domain.agregates.BorneLocation(boundedContexts.location.utilities.LinearIdGenerator())
         val ticket  = sut.EmettreTicket(duree = 5 * hours )
 
         ticket.dureeDeLocation shouldBe  300 * minutes
@@ -60,7 +64,8 @@ class `2_CentraleLocationTest` : StringSpec({
 
 
     "pour 2 heures on paye 1 euros" .config(enabled = true) {
-        val sut = BorneLocation( LinearIdGenerator() )
+        val sut =
+            boundedContexts.location.domain.agregates.BorneLocation(boundedContexts.location.utilities.LinearIdGenerator())
         val ticket  = sut.EmettreTicket(duree = 120 * minutes )
 
         ticket.dureeDeLocation shouldBe  120 * minutes
@@ -73,7 +78,8 @@ class `2_CentraleLocationTest` : StringSpec({
 
 
     "je veux prendre un ticket au parcemetre pour 30 minutes" .config(enabled = false)  {
-        val parcmetre = BorneLocation(LinearIdGenerator() )
+        val parcmetre =
+            boundedContexts.location.domain.agregates.BorneLocation(boundedContexts.location.utilities.LinearIdGenerator())
 
         val ticket  = parcmetre.EmettreTicket(duree = 30 * minutes)
 

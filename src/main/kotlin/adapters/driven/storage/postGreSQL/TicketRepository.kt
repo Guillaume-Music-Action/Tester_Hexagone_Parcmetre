@@ -1,11 +1,12 @@
 package adapters.driven.storage.postGreSQL
 
-import location.behaviors.ITicketRepository
-import location.models.DTOs.TicketDto
+import boundedContexts.location.behaviors.ITicketRepository
+import boundedContexts.location.models.DTOs.TicketDto
 import java.sql.DriverManager
 
 
-class TicketRepository(jdbcUrl: String, username: String, password: String) : ITicketRepository {
+class TicketRepository(jdbcUrl: String, username: String, password: String) :
+    boundedContexts.location.behaviors.ITicketRepository {
 
     private val storageConnection = DriverManager.getConnection(jdbcUrl, username, password)
 
@@ -22,7 +23,7 @@ class TicketRepository(jdbcUrl: String, username: String, password: String) : IT
         createTableStatement.execute()
     }
 
-    override fun saveTicket(ticket: TicketDto) = runCatching {
+    override fun saveTicket(ticket: boundedContexts.location.models.DTOs.TicketDto) = runCatching {
         val insertStatement = storageConnection.prepareStatement(
             "insert into ticket(id, park_time_minutes) values (?, ?)"
         )
@@ -41,7 +42,7 @@ class TicketRepository(jdbcUrl: String, username: String, password: String) : IT
         return Result.success(res)
     }
 
-    override fun getTickets(): Result<List<TicketDto>> {
+    override fun getTickets(): Result<List<boundedContexts.location.models.DTOs.TicketDto>> {
         TODO("Not yet implemented")
     }
 }

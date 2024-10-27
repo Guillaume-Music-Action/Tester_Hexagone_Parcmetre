@@ -1,10 +1,10 @@
 package adapters.exercice_3_adapters_fakes
 
-import location.behaviors.ITicketRepository
-import location.models.DTOs.TicketDto
+import boundedContexts.location.behaviors.ITicketRepository
+import boundedContexts.location.models.DTOs.TicketDto
 
-class EspionStockage : ITicketRepository {
-    override fun saveTicket(ticket: TicketDto): Result<Boolean> {
+class EspionStockage : boundedContexts.location.behaviors.ITicketRepository {
+    override fun saveTicket(ticket: boundedContexts.location.models.DTOs.TicketDto): Result<Boolean> {
        return Result.success(true)
     }
 
@@ -12,7 +12,7 @@ class EspionStockage : ITicketRepository {
         TODO("Not yet implemented")
     }
 
-    override fun getTickets(): Result<List<TicketDto>> {
+    override fun getTickets(): Result<List<boundedContexts.location.models.DTOs.TicketDto>> {
         TODO("Not yet implemented")
     }
 }

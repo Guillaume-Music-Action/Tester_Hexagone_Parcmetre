@@ -1,4 +1,4 @@
-package location.domain.entities
+package boundedContexts.location.domain.entities
 
 import boundedContexts.universel.valueObjects.Monnaie
 import io.nacular.measured.units.Measure

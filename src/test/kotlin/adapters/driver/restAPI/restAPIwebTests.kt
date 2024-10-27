@@ -5,8 +5,8 @@ import com.natpryce.hamkrest.and
 import com.natpryce.hamkrest.assertion.assertThat
 import io.kotest.core.spec.style.FunSpec
 import adapters.driver.httpServer
-import location.useCases.AcheterUnTicketDeLocation
-import location.utilities.LinearIdGenerator
+import boundedContexts.location.useCases.AcheterUnTicketDeLocation
+import boundedContexts.location.utilities.LinearIdGenerator
 import org.http4k.client.OkHttp
 import org.http4k.core.Method
 import org.http4k.core.Method.GET
@@ -22,7 +22,8 @@ class RestApiTest : FunSpec({
         // SETUP TEST
         val client = OkHttp()
         //   val store =  Repository()
-        val useCase = AcheterUnTicketDeLocation(LinearIdGenerator())  //testableIdGenerateur
+        val useCase =
+            boundedContexts.location.useCases.AcheterUnTicketDeLocation(boundedContexts.location.utilities.LinearIdGenerator())  //testableIdGenerateur
         val server = httpServer(0, useCase)
         server.start()
 
