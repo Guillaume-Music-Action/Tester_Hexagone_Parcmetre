@@ -1,13 +1,19 @@
 package adapters.driven.storage.postGreSQL
 
 import boundedContexts.location.ports.ITicketRepository
+import java.sql.Connection
 import java.sql.DriverManager
 
 
-class TicketRepository(jdbcUrl: String, username: String, password: String) :
+class TicketRepository :
     ITicketRepository {
 
-    private val storageConnection = DriverManager.getConnection(jdbcUrl, username, password)
+    constructor(jdbcUrl: String, username: String, password: String) {
+        this.storageConnection = DriverManager.getConnection(jdbcUrl, username, password)
+        createTableTicket()
+    }
+
+    private val storageConnection: Connection
 
 
     fun createTableTicket() = runCatching {
@@ -43,9 +49,5 @@ class TicketRepository(jdbcUrl: String, username: String, password: String) :
 
     override fun getTickets(): Result<List<boundedContexts.location.models.DTOs.TicketDto>> {
         TODO("Not yet implemented")
-    }
-
-    override fun start() {
-       createTableTicket()
     }
 }

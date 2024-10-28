@@ -22,7 +22,7 @@ class App : KoinComponent {
     private val dataAdapter by inject<ITicketRepository>()
 
     fun start() {
-        dataAdapter.start()
+
         httpServer(8818, boundedContexts.location.useCases.AcheterUnTicketDeLocation(generateurId, dataAdapter))
             .start()
     }

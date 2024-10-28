@@ -14,8 +14,6 @@ class FauxStockage : ITicketRepository {
 
     override fun getTickets(): Result<List<boundedContexts.location.models.DTOs.TicketDto>> = Result.success( listDesTickets)
 
-    override fun start() {}
-
 }
 
 

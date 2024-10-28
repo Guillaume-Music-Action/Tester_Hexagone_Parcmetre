@@ -14,7 +14,4 @@ class EspionStockage : ITicketRepository {
     override fun getTickets(): Result<List<boundedContexts.location.models.DTOs.TicketDto>> {
         TODO("Not yet implemented")
     }
-
-    override fun start() {
-    }
 }
