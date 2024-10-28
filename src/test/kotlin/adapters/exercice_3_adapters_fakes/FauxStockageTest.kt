@@ -12,16 +12,21 @@ class FauxStockageTest : FunSpec({
     val testTicket = TicketDto("1", 2)
     val fauxStockageFactory = {  -> FauxStockage() }
 
-    // TODO: à garder pour la fin
-        include( StorageSharedTests.storageSaveAndCount(stockage = fauxStockageFactory()))
-        include(StorageSharedTests.storageSaveAndRead(stockage = fauxStockageFactory()))
-
         test("sauver le ticket....") {
             val leStockage = fauxStockageFactory()
 
             // à vous de jouer
+
+
         }
 
 
+
+
+
+
+    // TODO: à garder pour la fin
+    // include( StorageSharedTests.storageSaveAndCount(stockage = fauxStockageFactory()))
+    // include(StorageSharedTests.storageSaveAndRead(stockage = fauxStockageFactory()))
 })
 
