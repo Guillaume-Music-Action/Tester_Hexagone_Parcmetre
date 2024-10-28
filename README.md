@@ -1,4 +1,4 @@
-# Atelier Doublures
+# Atelier Doublures pour Architecture Hexagonale
 
 ## Pitch 
 
