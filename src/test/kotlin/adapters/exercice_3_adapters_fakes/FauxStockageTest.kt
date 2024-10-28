@@ -36,6 +36,5 @@ class FauxStockageTest : FunSpec({
     }
 
 
-    // //val r3 = repo.saveTicket(boundedContexts.location.models.DTOs.TicketDto(id = "2zzzzz", elapseMinutes = 4455545451))
 })
 

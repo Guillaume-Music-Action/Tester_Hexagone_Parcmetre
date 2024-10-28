@@ -39,7 +39,7 @@ val developperMode = module {
 val productionMode = module {
     single<IJeDonneDesIdentifiants>() { boundedContexts.location.utilities.UlidGenerateur() }
 
-    single<ITicketRepository> {  TicketRepository( "jdbc:postgresql://instance001:5432/prodBase", "SECRET",
+    single<ITicketRepository> {  TicketRepository( "jdbc:postgresql://instance001.iter.org:5432/prodBase", "SECRET",
         "SECRET" ) }
 }
 
