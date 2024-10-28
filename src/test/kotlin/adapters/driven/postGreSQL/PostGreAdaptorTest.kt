@@ -15,7 +15,7 @@ class PostGreAdaptorTest : StringSpec({
         val password = postgreSQLContainer.password
         val repo = TicketRepository(postgreSQLContainer.jdbcUrl, userName, password)
 
-        repo.createTableTicket()
+       // repo.createTableTicket()
         val r1  =repo.saveTicket(boundedContexts.location.models.DTOs.TicketDto(id = "1", amountOfMinutes = 30))
         r1.isSuccess  shouldBe  true
         val r2 = repo.saveTicket(boundedContexts.location.models.DTOs.TicketDto(id = "2", amountOfMinutes = 18))
@@ -52,7 +52,7 @@ class PostGreAdaptorTest : StringSpec({
         val password = postgreSQLContainer.password
         val repo = TicketRepository(postgreSQLContainer.jdbcUrl, userName, password)
 
-        repo.createTableTicket()
+
 
 
         val r3 = repo.saveTicket(boundedContexts.location.models.DTOs.TicketDto(id = "2Z", amountOfMinutes = 445554541))
