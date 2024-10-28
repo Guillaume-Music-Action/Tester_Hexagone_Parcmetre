@@ -30,7 +30,7 @@ class `1_TestTicket` : StringSpec(
 
             val ticket = ticketGenerateur.Creation(
                 LocalDateTime(2016, 2, 15, 16, 57, 0, 0),
-                Measure(42.0, minutes),
+                (42.0 *  minutes),
             )
 
             //  ticket.id shouldNotBe null
