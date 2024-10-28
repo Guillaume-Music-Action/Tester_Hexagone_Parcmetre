@@ -5,7 +5,7 @@ import boundedContexts.location.ports.ITicketRepository
 class FauxStockage : ITicketRepository {
 
 
-    override fun saveTicket(ticket: boundedContexts.location.models.DTOs.TicketDto) = runCatching {
+    override fun saveTicket(ticket: boundedContexts.location.models.DTOs.TicketDto): Result<Boolean> {
        TODO()
     }
 

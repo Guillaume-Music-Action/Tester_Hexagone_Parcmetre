@@ -16,7 +16,7 @@ class AcheterUnTicketDeLocation(val generateurId: IJeDonneDesIdentifiants, val d
     IRequestHandler<DemandeDuTicket, Result<Ticket>> {
 
 
-    override suspend fun handle(demande: DemandeDuTicket): Result<Ticket> = coroutineScope {
+    override  fun handle(demande: DemandeDuTicket): Result<Ticket>   {
         println("on demarre le request handler, ca va prendre du temps")
 
         //faire ici l'appel métier
@@ -25,21 +25,14 @@ class AcheterUnTicketDeLocation(val generateurId: IJeDonneDesIdentifiants, val d
 
         //puis l'appel à l'adapter de stockage
         var ticketDto = TicketDto(id = ticket.Id, amountOfMinutes = ticket.dureeDeLocation.amount.toInt())
-        dataAdapter.saveTicket(ticketDto)
 
+        val result =dataAdapter.saveTicket(ticketDto)
+        //handle dataAdapter failure
 
-        Result.success(ticket)
-        //Result.failure(TODO("faites passer ce test au vert"))
+        return Result.success(ticket)
     }
 
 
-    suspend fun fauxAppelBaseDeDonnees(times: Int, char: Char = '.') = coroutineScope {
-        println("appel long (${times})")
-        repeat(times) {
-            delay(10)  // Delay for 10 milliseconds
-            print(char)
-        }
-    }
 }
 
 

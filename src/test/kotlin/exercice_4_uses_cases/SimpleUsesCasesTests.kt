@@ -1,15 +1,12 @@
 package exercice_4_uses_cases
 
 import adapters.exercice_3_adapters_fakes.FauxStockage
-import io.kotest.core.spec.style.StringSpec
-import io.kotest.matchers.result.shouldBeSuccess
-import io.kotest.matchers.shouldNotBe
-import kotlinx.coroutines.async
-import kotlinx.coroutines.coroutineScope
 import boundedContexts.location.useCases.AcheterUnTicketDeLocation
 import boundedContexts.location.useCases.DemandeDuTicket
 import boundedContexts.location.utilities.LinearIdGenerator
-import boundedContexts.location.utilities.testableIdGenerateur
+import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.result.shouldBeSuccess
+import io.kotest.matchers.shouldNotBe
 
 
 class SimpleUsesCasesTests : StringSpec({
@@ -18,26 +15,22 @@ class SimpleUsesCasesTests : StringSpec({
     it often loads one or several aggregates and invokes business logic on them.*/
 
 
-    "l'utilisateur prend un ticket et celui est enregistré pour de bon" .config(enabled = true) {
+    "l'utilisateur prend un ticket et celui est enregistré pour de bon".config(enabled = true) {
 
         val demande =
             DemandeDuTicket(immatriculationVehicule = "imma", montantEuro = 5)
         val useCase =
             AcheterUnTicketDeLocation(
                 generateurId = LinearIdGenerator(),
-                 dataAdapter =  FauxStockage()
+                dataAdapter = FauxStockage()
             )
 
-        coroutineScope {
+        val res = useCase.handle(demande)
 
-            val continuation = async { useCase.handle(demande) }
-            val res= continuation.await()
-            res shouldBeSuccess
-            res.getOrNull() shouldNotBe null
+        res shouldBeSuccess
+                res.getOrNull() shouldNotBe null
 
-        }
         // verifier avec l'adapter que le ticket est bien dedans
-
     }
 })
 
