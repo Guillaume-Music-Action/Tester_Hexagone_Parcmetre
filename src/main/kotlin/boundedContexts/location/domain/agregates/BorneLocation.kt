@@ -21,7 +21,7 @@ class BorneLocation(private val generateurId: IJeDonneDesIdentifiants) {
     fun EmettreTicket(argent: Monnaie): boundedContexts.location.domain.entities.Ticket =
         boundedContexts.location.domain.entities.Ticket(
             Id = generateurId.idSuivant(),
-            dureeDeLocation = (argent.valeur / boundedContexts.location.domain.agregates.prixEnEurosPour30Minutes) * boundedContexts.location.domain.agregates.dureeTrancheHoraire,
+            dureeDeLocation = (argent.valeur / prixEnEurosPour30Minutes) * dureeTrancheHoraire,
             prix = Monnaie.Zero(),
         )
 
@@ -32,7 +32,7 @@ class BorneLocation(private val generateurId: IJeDonneDesIdentifiants) {
             dureeDeLocation = duree,
             prix = when {
                 duree <= 240 * minutes -> Monnaie(
-                    ((duree / boundedContexts.location.domain.agregates.dureeTrancheHoraireMinutes) * boundedContexts.location.domain.agregates.prixEnEurosPour30Minutes).amount.toInt(),
+                    ((duree / dureeTrancheHoraireMinutes) * prixEnEurosPour30Minutes).amount.toInt(),
                     Devises.EUROS
                 )
 

@@ -1,5 +1,3 @@
 package draft
 
-class Voiture(val PlaqueImmatriculation: String) {
-
-}
+class Voiture(val PlaqueImmatriculation: String)

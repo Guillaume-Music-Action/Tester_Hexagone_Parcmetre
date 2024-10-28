@@ -29,7 +29,7 @@ class App : KoinComponent {
 }
 
 val developperMode = module {
-    single<IJeDonneDesIdentifiants>() { boundedContexts.location.utilities.UlidGenerateur() }
+    single<IJeDonneDesIdentifiants> { boundedContexts.location.utilities.UlidGenerateur() }
     single<IJeDonneDesIdentifiants>(named("deterministic")) { boundedContexts.location.utilities.LinearIdGenerator() }
 
     single<ITicketRepository> {  TicketRepository( "jdbc:postgresql://localhost:5432/mydatabase", "postgres",
@@ -37,7 +37,7 @@ val developperMode = module {
 }
 
 val productionMode = module {
-    single<IJeDonneDesIdentifiants>() { boundedContexts.location.utilities.UlidGenerateur() }
+    single<IJeDonneDesIdentifiants> { boundedContexts.location.utilities.UlidGenerateur() }
 
     single<ITicketRepository> {  TicketRepository( "jdbc:postgresql://instance001.iter.org:5432/prodBase", "SECRET",
         "SECRET" ) }

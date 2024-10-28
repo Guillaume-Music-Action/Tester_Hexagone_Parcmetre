@@ -9,7 +9,7 @@ class GenerateurIdentifiantTests : StringSpec({
 
     "le generateur doit delivrer une valeur" .config(enabled = false) {
 
-        val sut = boundedContexts.location.utilities.testableIdGenerateur()
+        val sut = testableIdGenerateur()
         val idObtenu =  sut.idSuivant()
 
         idObtenu shouldBe "quoi?"
@@ -22,7 +22,7 @@ class GenerateurIdentifiantTests : StringSpec({
 
     "le generateur ne peut delivrer deux fois la meme valeur" .config(enabled = false) {
 
-        val sut = boundedContexts.location.utilities.testableIdGenerateur()
+        val sut = testableIdGenerateur()
         val idObtenu1 = sut.idSuivant()
         val idObtenu2 = sut.idSuivant()
 

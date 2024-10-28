@@ -18,7 +18,7 @@ class `1_TestTicket` : StringSpec(
     {
 
         "le ticket est là".config(enabled = true) {
-            var sut = boundedContexts.location.domain.entities.Ticket("", 42 * minutes, Monnaie.Zero())
+            var sut = Ticket("", 42 * minutes, Monnaie.Zero())
             sut.dureeDeLocation shouldBe 42 * (60 * seconds)
         }
 
@@ -26,7 +26,7 @@ class `1_TestTicket` : StringSpec(
             // remplacer IdGenerateur par un fake+spy  (ca veut dire un contrat derriere => ULID.Suivant())
             // montrer comment hors du test, c'est un UlidGenerateur qui va prendre la place
             var ticketGenerateur =
-                boundedContexts.location.domain.entities.UsineDeTickets(boundedContexts.location.utilities.ulidGenerateur)
+                UsineDeTickets(ulidGenerateur)
 
             val ticket = ticketGenerateur.Creation(
                 LocalDateTime(2016, 2, 15, 16, 57, 0, 0),
@@ -45,7 +45,7 @@ class `1_TestTicket` : StringSpec(
             .config(enabled = true) {
 
                 var ticketGenerateur =
-                    boundedContexts.location.domain.entities.UsineDeTickets(boundedContexts.location.utilities.ulidGenerateur)
+                    UsineDeTickets(ulidGenerateur)
 
                 val ticket1 = ticketGenerateur.Creation(
                     LocalDateTime(2016, 2, 15, 16, 57, 0, 0),

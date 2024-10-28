@@ -4,15 +4,14 @@ import boundedContexts.location.ports.ITicketRepository
 
 class FauxStockage : ITicketRepository {
 
-    val listDesTickets = mutableListOf<boundedContexts.location.models.DTOs.TicketDto>()
 
     override fun saveTicket(ticket: boundedContexts.location.models.DTOs.TicketDto) = runCatching {
-        listDesTickets.add(ticket)
+       TODO()
     }
 
-    override fun cardinalityTickets(): Result<Int> = Result.success(listDesTickets.size)
+    override fun cardinalityTickets(): Result<Int> =  TODO()
 
-    override fun getTickets(): Result<List<boundedContexts.location.models.DTOs.TicketDto>> = Result.success( listDesTickets)
+    override fun getTickets(): Result<List<boundedContexts.location.models.DTOs.TicketDto>> =  TODO()
 
 }
 

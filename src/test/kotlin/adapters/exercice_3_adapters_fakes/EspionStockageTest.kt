@@ -11,7 +11,7 @@ class EspionStockageTest {
 
         var spy = EspionStockage()
 
-        var actual = spy.saveTicket(boundedContexts.location.models.DTOs.TicketDto("0", 0))
+        var actual = spy.saveTicket(TicketDto("0", 0))
 
         actual  shouldBeSuccess true
        // actual.SaveCombienDeFois shouldBe 1

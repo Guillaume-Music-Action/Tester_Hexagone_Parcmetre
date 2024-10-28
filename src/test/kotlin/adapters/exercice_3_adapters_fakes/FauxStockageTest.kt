@@ -10,30 +10,17 @@ import io.kotest.matchers.should
 class FauxStockageTest : FunSpec({
 
     val testTicket = TicketDto("1", 2)
-    val fauxStockageFactory = {  -> FauxStockage()}
+    val fauxStockageFactory = {  -> FauxStockage() }
 
+    // TODO: à garder pour la fin
         include( StorageSharedTests.storageSaveAndCount(stockage = fauxStockageFactory()))
-
         include(StorageSharedTests.storageSaveAndRead(stockage = fauxStockageFactory()))
 
-        test("sauver le ticket augmente la taille de la liste ") {
+        test("sauver le ticket....") {
             val leStockage = fauxStockageFactory()
-            leStockage.saveTicket(testTicket)
-            leStockage.listDesTickets.size shouldBe 1
+
+            // à vous de jouer
         }
-
-    test("sauver le ticket et les compter ensuite") {
-        val leStockage = fauxStockageFactory()
-        leStockage.saveTicket(testTicket)
-        leStockage.cardinalityTickets() shouldBeSuccess(1)
-    }
-
-    test("sauver un ticket qui possede un large nombre de minutes") {
-        val leStockage = fauxStockageFactory()
-        val largeTicket = TicketDto("1", 445554541)
-        leStockage.saveTicket(largeTicket)
-        leStockage.cardinalityTickets() shouldBeSuccess(1)
-    }
 
 
 })
