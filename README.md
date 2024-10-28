@@ -16,7 +16,7 @@ Vous pourrez, par exemple, comparer en situation réaliste, l’usage d’un fak
 
 
 
-A dire plutôt sur la fin... 
+## à retenir
 - écouter les tests, si ces derniers sont compliqué ou difficile à écrire, ou sont fragile alors il y a certainement un 
 problème de design. Trop de resposabilités ? Trop de dépendances ? Par exemple Ticket et horodatage = trop de responsabilités ce n'est pas à lui de déterminer l'origine du temps, 
 c'est fonction impure elle dépend de l'état du système et de plus elle possède une dépendance extern, ici l'horloge du système.
