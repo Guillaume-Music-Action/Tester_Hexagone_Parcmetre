@@ -1,6 +1,6 @@
-package exercice_1.regles_metier
+package boundedContexts.location.domain.values
 
-class DureeDeLocation(val demiHeure: Int ) {
+data class DureeDeLocation(val demiHeure: Int ) {
     val dureeEnMinutes: Int = demiHeure * 30
 
     companion object {

@@ -1,7 +1,7 @@
-package metier.objetValeurs
+package metier.objetValeurs.mauvaiseIdee
 
-import boundedContexts.universel.valueObjects.Temps
-import boundedContexts.universel.valueObjects.UniteTemps
+import boundedContexts.universel.valueObjects.mauvaiseIdee.Temps
+import boundedContexts.universel.valueObjects.mauvaiseIdee.UniteTemps
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 

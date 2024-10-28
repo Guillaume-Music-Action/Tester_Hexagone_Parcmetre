@@ -1,4 +1,4 @@
-package boundedContexts.universel.valueObjects
+package boundedContexts.universel.valueObjects.mauvaiseIdee
 
 import io.nacular.measured.units.Measure
 import io.nacular.measured.units.Time
