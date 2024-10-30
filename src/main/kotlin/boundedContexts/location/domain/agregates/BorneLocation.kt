@@ -16,9 +16,14 @@ private const val prixEnEurosPour30Minutes = 0.25
 private val dureeTrancheHoraire = 30 * minutes
 private val dureeTrancheHoraireMinutes = 30
 
-//que fait elle / quelles sont ses responsabilités ?
+private const val nombreHeuresMaximaleAutorisees = 8
+
+
 class BorneLocation(private val generateurId: IJeDonneDesIdentifiants) {
 
+    companion object {
+        fun nombreHeuresMaximale() = 8 * hours;
+    }
 
     fun EmettreTicket(argent: Monnaie): Ticket =
         Ticket(
@@ -43,7 +48,7 @@ class BorneLocation(private val generateurId: IJeDonneDesIdentifiants) {
         )
 
     fun EmettreTicketResult(duree: Measure<Time>): Result<Ticket>  {
-        if ( duree > 8 * hours)
+        if ( duree > nombreHeuresMaximale() )
             return Result.failure(  Exception("durée limitée à 8 heures maximum"))
         val ticket =  EmettreTicket(duree)
         return Result.success(ticket)
