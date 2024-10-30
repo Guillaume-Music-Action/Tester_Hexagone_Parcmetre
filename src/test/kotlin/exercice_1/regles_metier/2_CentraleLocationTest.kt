@@ -11,33 +11,39 @@ import boundedContexts.universel.valueObjects.Devises
 import boundedContexts.universel.valueObjects.Monnaie
 import io.nacular.measured.units.Time.Companion.hours
 import boundedContexts.location.utilities.LinearIdGenerator
+import boundedContexts.location.utilities.UlidGenerateur
+import io.kotest.matchers.result.shouldBeSuccess
+import io.nacular.measured.units.Time.Companion.seconds
 
 @AutoScan
 class `2_CentraleLocationTest` : StringSpec({
 
 
-    "je veux prendre un ticket au parcemetre pour 30 minutes" .config(enabled = false)  {
-        val parcmetre =
-            BorneLocation(LinearIdGenerator())
+    "je veux prendre un ticket à la borne de location pour 30 minutes" .config(enabled = false)  {
 
-        val ticket  = parcmetre.EmettreTicket(duree = 30 * minutes)
+        val borneLocation = BorneLocation(UlidGenerateur())
 
-        ticket.dureeDeLocation shouldBe  30 * minutes
+        val ticket  = borneLocation.EmettreTicket(duree = 30 * minutes)
 
+        ticket.dureeDeLocation shouldBe  1800 * seconds
+        ticket.Id shouldBe "01JBEE2F630FN3R662Q5HN24M6"
+        // pas testable parce que c'est aléatoire
+    }
+
+    "je veux prendre un ticket à la borne de location pour 30 minutes avec result" .config(enabled = true)  {
+
+        val borneLocation = BorneLocation(LinearIdGenerator ())
+
+
+        val ticket2  = borneLocation.EmettreTicketResult(duree = 30 * minutes)
+
+        ticket2.isSuccess shouldBe true
+        ticket2.shouldBeSuccess()
+        ticket2.getOrNull()?.dureeDeLocation shouldBe 1800 * seconds
 
     }
 
 
-    "je veux prendre un ticket au parcemetre pour 120 minutes" .config(enabled = true) {
-
-        val sut =
-            BorneLocation(LinearIdGenerator())
-
-        val ticket  = sut.EmettreTicket(argent =  Monnaie(1, Devises.EUROS))
-
-        ticket.Id shouldBe "FAUX-ID-1"
-        ticket.dureeDeLocation shouldBe   120 * minutes
-    }
 
     "je veux prendre un ticket au parcemetre pour 240 minutes" .config(enabled = true) {
         val sut =
@@ -64,27 +70,34 @@ class `2_CentraleLocationTest` : StringSpec({
     "pour 2 heures on paye 1 euros" .config(enabled = true) {
         val sut =
             BorneLocation(LinearIdGenerator())
-        val ticket  = sut.EmettreTicket(duree = 120 * minutes )
 
-        ticket.dureeDeLocation shouldBe  120 * minutes
-        ticket.dureeDeLocation.amount shouldBe 120
-        ticket.prix shouldBe  Monnaie(1, Devises.EUROS)
-    }
+        val ticket2= sut.EmettreTicketResult(duree = 120 * minutes )
 
-    "au delà de 4 heures on paye 4 euros" .config(enabled = true) {
+        ticket2.isSuccess shouldBe true
+        ticket2.getOrNull()?.dureeDeLocation shouldBe  120 * minutes
+        ticket2.getOrNull()?.prix shouldBe  Monnaie(1, Devises.EUROS)
+
+      }
+
+    "au delà de 8 heures on paye 4 euros" .config(enabled = true) {
         val sut =
             BorneLocation(LinearIdGenerator())
-        val ticket  = sut.EmettreTicket(duree = 5 * hours )
+        val ticket  = sut.EmettreTicketResult(duree = 8 * hours )
 
-        ticket.dureeDeLocation shouldBe  300 * minutes
-        ticket.dureeDeLocation shouldBe  5 * hours
+        ticket.getOrNull()?.dureeDeLocation shouldBe  8 * hours
+        ticket.getOrNull()?.prix shouldBe  Monnaie(4, Devises.EUROS)
+    }
 
-        ticket.dureeDeLocation.amount shouldBe 300
-        ticket.prix shouldBe  Monnaie(4, Devises.EUROS)
+    // ATBDX-2024: durée maximum de la location
+    "9h n'est pas une duree validee" .config(enabled = true) {
+        val sut = BorneLocation(LinearIdGenerator())
+        val ticket  = sut.EmettreTicketResult (duree = 9 * hours )
+
+        ticket.isFailure shouldBe true
     }
 
 
-    // TODO: durée maximum de la location   ???
+
 
 
 })
