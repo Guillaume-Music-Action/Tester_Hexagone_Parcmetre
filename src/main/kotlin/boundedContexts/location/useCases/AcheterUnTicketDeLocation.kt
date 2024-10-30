@@ -26,7 +26,7 @@ class AcheterUnTicketDeLocation(val generateurId: IJeDonneDesIdentifiants, val d
         //puis l'appel à l'adapter de stockage
         var ticketDto = TicketDto(id = ticket.Id, amountOfMinutes = ticket.dureeDeLocation.amount.toInt())
 
-        val result =dataAdapter.saveTicket(ticketDto)
+        val result = dataAdapter.saveTicket(ticketDto)
         //handle dataAdapter failure
 
         return Result.success(ticket)
