@@ -17,8 +17,7 @@ class SimpleUsesCasesTests : StringSpec({
 
     "l'utilisateur prend un ticket et celui est enregistré pour de bon".config(enabled = true) {
 
-        val demande =
-            DemandeDuTicket(immatriculationVehicule = "imma", montantEuro = 5)
+        val demande =   DemandeDuTicket( montantEuro = 5)
         val useCase =
             AcheterUnTicketDeLocation(
                 generateurId = LinearIdGenerator(),

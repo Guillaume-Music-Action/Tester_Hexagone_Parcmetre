@@ -37,7 +37,6 @@ fun locationHttpHandler(useCase: boundedContexts.location.useCases.AcheterUnTick
                 null -> Response(I_M_A_TEAPOT)
                 else -> {
                     val demande = boundedContexts.location.useCases.DemandeDuTicket(
-                        immatriculationVehicule = "",
                         montantEuro = parsedAmount
                     )
 

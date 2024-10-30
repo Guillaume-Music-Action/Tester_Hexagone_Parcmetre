@@ -1,3 +1,9 @@
 package boundedContexts.location.useCases
 
-data class DemandeDuTicket(val immatriculationVehicule: String, val montantEuro: Int)
+import org.apache.hc.core5.reactor.Command
+
+data class DemandeDuTicket( val montantEuro: Int) : Commande
+
+
+
+interface Commande {}
