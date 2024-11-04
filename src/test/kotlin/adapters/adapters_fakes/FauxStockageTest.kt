@@ -1,11 +1,7 @@
-package adapters.exercice_3_adapters_fakes
+package adapters.adapters_fakes
 
-import adapters.StorageSharedTests
 import io.kotest.core.spec.style.FunSpec
-import io.kotest.matchers.shouldBe
 import boundedContexts.location.models.DTOs.TicketDto
-import io.kotest.matchers.result.shouldBeSuccess
-import io.kotest.matchers.should
 
 class FauxStockageTest : FunSpec({
 

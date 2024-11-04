@@ -1,6 +1,6 @@
 package exercice_4_uses_cases
 
-import adapters.exercice_3_adapters_fakes.FauxStockage
+import adapters.adapters_fakes.FauxStockage
 import boundedContexts.location.useCases.AcheterUnTicketDeLocation
 import boundedContexts.location.useCases.DemandeDuTicket
 import boundedContexts.location.utilities.LinearIdGenerator

@@ -1,4 +1,4 @@
-package adapters.exercice_3_adapters_fakes
+package adapters.adapters_fakes
 
 import boundedContexts.location.ports.ITicketRepository
 

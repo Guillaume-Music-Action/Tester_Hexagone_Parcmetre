@@ -1,4 +1,4 @@
-package adapters.exercice_3_adapters_fakes
+package adapters.adapters_fakes
 
 import io.kotest.matchers.result.shouldBeSuccess
 import org.junit.jupiter.api.Test

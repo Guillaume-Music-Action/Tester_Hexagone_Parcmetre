@@ -1,4 +1,4 @@
-package adapters.exercice_3_adapters_fakes
+package exercice_3
 
 import kotlinx.datetime.LocalDateTime
 import boundedContexts.location.ports.ILesHorloges

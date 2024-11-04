@@ -5,7 +5,7 @@ import com.natpryce.hamkrest.and
 import com.natpryce.hamkrest.assertion.assertThat
 import io.kotest.core.spec.style.FunSpec
 import adapters.driver.httpServer
-import adapters.exercice_3_adapters_fakes.FauxStockage
+import adapters.adapters_fakes.FauxStockage
 import boundedContexts.location.useCases.AcheterUnTicketDeLocation
 import boundedContexts.location.utilities.LinearIdGenerator
 import org.http4k.client.OkHttp

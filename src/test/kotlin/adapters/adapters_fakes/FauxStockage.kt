@@ -1,9 +1,7 @@
-package adapters.exercice_3_adapters_fakes
+package adapters.adapters_fakes
 
-import boundedContexts.location.domain.entities.Ticket
 import boundedContexts.location.models.DTOs.TicketDto
 import boundedContexts.location.ports.ITicketRepository
-import kotlinx.coroutines.newSingleThreadContext
 
 class FauxStockage : ITicketRepository {
 
