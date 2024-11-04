@@ -30,7 +30,7 @@ class `2_CentraleLocation_Identifers_Tests` : StringSpec({
         // pas testable parce que c'est aléatoire
     }
 
-    "je veux prendre un ticket au parcemetre pour 240 minutes et il a un Id" .config(enabled = true) {
+    "je veux prendre un ticket à la borne pour 240 minutes et il a un Id" .config(enabled = true) {
         val sut =
             BorneLocation(LinearIdGenerator())
 
