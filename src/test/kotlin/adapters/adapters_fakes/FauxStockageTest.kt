@@ -1,5 +1,6 @@
 package adapters.adapters_fakes
 
+import adapters.StorageSharedTests
 import io.kotest.core.spec.style.FunSpec
 import boundedContexts.location.models.DTOs.TicketDto
 
@@ -10,19 +11,12 @@ class FauxStockageTest : FunSpec({
 
         test("sauver le ticket....") {
             val leStockage = fauxStockageFactory()
-
             // à vous de jouer
-
-
         }
 
-
-
-
-
-
-    // TODO: à garder pour la fin
-    // include( StorageSharedTests.storageSaveAndCount(stockage = fauxStockageFactory()))
-    // include(StorageSharedTests.storageSaveAndRead(stockage = fauxStockageFactory()))
+    // TESTS PARTAGES 🤓
+    include( StorageSharedTests.storageSaveAndCount(stockage = fauxStockageFactory()))
+    include(StorageSharedTests.storageSaveAndRead(stockage = fauxStockageFactory()))
+    include(StorageSharedTests.storageSaveTooLarge(stockage = fauxStockageFactory()))
 })
 
