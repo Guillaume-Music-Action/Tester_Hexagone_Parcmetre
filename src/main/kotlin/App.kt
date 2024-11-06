@@ -1,4 +1,4 @@
-import adapters.driven.storage.postGreSQL.PostGreTicketRepository
+import adapters.driven.storage.postGreSQL.PostGreTicketRepositoryAdapter
 import adapters.driver.httpServer
 import boundedContexts.location.ports.IJeDonneDesIdentifiants
 import boundedContexts.location.ports.ITicketRepository
@@ -32,14 +32,14 @@ val developperMode = module {
     single<IJeDonneDesIdentifiants> { boundedContexts.location.utilities.UlidGenerateur() }
     single<IJeDonneDesIdentifiants>(named("deterministic")) { boundedContexts.location.utilities.LinearIdGenerator() }
 
-    single<ITicketRepository> {  PostGreTicketRepository( "jdbc:postgresql://localhost:5432/mydatabase", "postgres",
+    single<ITicketRepository> {  PostGreTicketRepositoryAdapter( "jdbc:postgresql://localhost:5432/mydatabase", "postgres",
         "example" ) }
 }
 
 val productionMode = module {
     single<IJeDonneDesIdentifiants> { boundedContexts.location.utilities.UlidGenerateur() }
 
-    single<ITicketRepository> {  PostGreTicketRepository( "jdbc:postgresql://instance001.iter.org:5432/prodBase", "SECRET",
+    single<ITicketRepository> {  PostGreTicketRepositoryAdapter( "jdbc:postgresql://instance001.iter.org:5432/prodBase", "SECRET",
         "SECRET" ) }
 }
 

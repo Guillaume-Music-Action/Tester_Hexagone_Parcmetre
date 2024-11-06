@@ -5,7 +5,7 @@ import java.sql.Connection
 import java.sql.DriverManager
 
 
-class PostGreTicketRepository :
+class PostGreTicketRepositoryAdapter :
     ITicketRepository {
 
     constructor(jdbcUrl: String, username: String, password: String) {

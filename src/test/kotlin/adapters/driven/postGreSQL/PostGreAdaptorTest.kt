@@ -3,7 +3,7 @@ package adapters.driven.postGreSQL
 import io.kotest.core.spec.style.StringSpec
 import org.testcontainers.containers.PostgreSQLContainer
 import io.kotest.matchers.*
-import adapters.driven.storage.postGreSQL.PostGreTicketRepository
+import adapters.driven.storage.postGreSQL.PostGreTicketRepositoryAdapter
 
 class PostGreAdaptorTest : StringSpec({
 
@@ -14,16 +14,18 @@ class PostGreAdaptorTest : StringSpec({
         val userName = postgreSQLContainer.username
         val password = postgreSQLContainer.password
 
-        val repo = PostGreTicketRepository(postgreSQLContainer.jdbcUrl, userName, password)
+        val repo = PostGreTicketRepositoryAdapter(postgreSQLContainer.jdbcUrl, userName, password)
+
+        val countTicketsBefore = repo.countTickets()
+        countTicketsBefore.getOrThrow() shouldBe 0
+
         // Act
-        val r1  =repo.saveTicket(boundedContexts.location.models.DTOs.TicketDto(id = "1", amountOfMinutes = 30))
+        val r1  = repo.saveTicket(boundedContexts.location.models.DTOs.TicketDto(id = "1", amountOfMinutes = 30))
         r1.isSuccess  shouldBe  true
-        val r2 = repo.saveTicket(boundedContexts.location.models.DTOs.TicketDto(id = "2", amountOfMinutes = 18394949))
+        val r2 =  repo.saveTicket(boundedContexts.location.models.DTOs.TicketDto(id = "2", amountOfMinutes = 1839))
         r2.isSuccess  shouldBe true
 
-
-
-        // Act
+        // Verify
         val countTickets = repo.countTickets()
         // Assert
         countTickets.isSuccess  shouldBe true
@@ -52,7 +54,7 @@ class PostGreAdaptorTest : StringSpec({
         postgreSQLContainer.start()
         val userName = postgreSQLContainer.username
         val password = postgreSQLContainer.password
-        val repo = PostGreTicketRepository(postgreSQLContainer.jdbcUrl, userName, password)
+        val repo = PostGreTicketRepositoryAdapter(postgreSQLContainer.jdbcUrl, userName, password)
 
 
 
