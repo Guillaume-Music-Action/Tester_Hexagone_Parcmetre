@@ -24,7 +24,7 @@ class PostGreAdaptorTest : StringSpec({
 
 
         // Act
-        val countTickets = repo.cardinalityTickets()
+        val countTickets = repo.countTickets()
         // Assert
         countTickets.isSuccess  shouldBe true
         countTickets.getOrThrow() shouldBe 2
@@ -61,7 +61,7 @@ class PostGreAdaptorTest : StringSpec({
         r3.isFailure  shouldBe false
 
         // Act
-        val countTickets = repo.cardinalityTickets()
+        val countTickets = repo.countTickets()
         // Assert
         countTickets.isSuccess  shouldBe true
         countTickets.getOrThrow() shouldBe 1

@@ -13,7 +13,7 @@ object StorageSharedTests
         test("cardinalityTickets should return the number of saved tickets") {
 
             stockage.saveTicket(TicketDto("1", 2))
-            stockage.cardinalityTickets().getOrNull() shouldBe 1
+            stockage.countTickets().getOrNull() shouldBe 1
         }
     }
 
@@ -30,7 +30,7 @@ object StorageSharedTests
 
             val largeTicket = TicketDto("1", 445554541)
             stockage.saveTicket(largeTicket)
-            stockage.cardinalityTickets() shouldBeSuccess (1)
+            stockage.countTickets() shouldBeSuccess (1)
         }
     }
 }

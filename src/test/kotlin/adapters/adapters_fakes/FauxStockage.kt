@@ -12,7 +12,7 @@ class FauxStockage : ITicketRepository {
         return Result.success(true)
     }
 
-    override fun cardinalityTickets(): Result<Int> = Result.success(listeDeTicket.size)
+    override fun countTickets(): Result<Int> = Result.success(listeDeTicket.size)
     override fun getTickets(): Result<List<boundedContexts.location.models.DTOs.TicketDto>> =
         Result.success(listeDeTicket)
 }

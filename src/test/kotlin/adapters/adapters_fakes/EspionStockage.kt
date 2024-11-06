@@ -13,7 +13,7 @@ class EspionStockage : ITicketRepository {
        return Result.success(true)
     }
 
-    override fun cardinalityTickets(): Result<Int> {
+    override fun countTickets(): Result<Int> {
         TODO("Not yet implemented")
     }
 

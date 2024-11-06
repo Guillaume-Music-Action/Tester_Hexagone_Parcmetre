@@ -37,7 +37,7 @@ class PostGreTicketRepository :
         insertStatement.execute()
     }
 
-    override fun cardinalityTickets(): Result<Int> = runCatching {
+    override fun countTickets(): Result<Int> = runCatching {
         val selectStatement = storageConnection.prepareStatement(
             "select count(*) as cardinalityTickets from ticket"
         )
