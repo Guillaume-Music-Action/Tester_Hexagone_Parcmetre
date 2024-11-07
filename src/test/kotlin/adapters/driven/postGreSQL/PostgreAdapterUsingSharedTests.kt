@@ -18,19 +18,11 @@ class PostgreAdapterUsingSharedTests  : FunSpec({
     val teardown = { -> postgreSQLContainer.stop()}
 
     // TESTS PARTAGES 🤓
-       include( StorageSharedTests.storageSaveAndCount(getStockage = fauxStockageFactory, init, teardown))
+    include( StorageSharedTests.storageSaveAndCount(getStockage = fauxStockageFactory, init, teardown))
+
+    include(  StorageSharedTests.storageSaveAndRead(fauxStockageFactory, init, teardown))
+
+    include( StorageSharedTests.storageSaveTooLarge(fauxStockageFactory, init, teardown))
 
 
-
-    test("2e CRUD avec test container") {
-        postgreSQLContainer.start()
-        StorageSharedTests.storageSaveAndRead(stockage = fauxStockageFactory())
-        postgreSQLContainer.stop()
-    }
-
-   test ("3e CRUD avec test container") {
-        postgreSQLContainer.start()
-        StorageSharedTests.storageSaveTooLarge(stockage = fauxStockageFactory())
-        postgreSQLContainer.stop()
-    }
 })

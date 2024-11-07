@@ -20,7 +20,7 @@ class FauxStockageTest : FunSpec({
         init = {},
         teardown = {}
     ))
-    include(StorageSharedTests.storageSaveAndRead(stockage = fauxStockageFactory()))
-    include(StorageSharedTests.storageSaveTooLarge(stockage = fauxStockageFactory()))
+    include(StorageSharedTests.storageSaveAndRead( fauxStockageFactory,{}, {}))
+    include(StorageSharedTests.storageSaveTooLarge( fauxStockageFactory,{}, {}))
 })
 

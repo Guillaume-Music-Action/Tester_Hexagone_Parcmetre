@@ -50,13 +50,15 @@ class PostGreTicketRepositoryAdapter :
 
     override fun getTickets(): Result<List<boundedContexts.location.models.DTOs.TicketDto>> {
         val selectStatement = storageConnection.prepareStatement(
-            "select (id, park_time_minutes) from ticket"
+            "select id, park_time_minutes from ticket"
         )
         val result = selectStatement.executeQuery()
-        result.next()
-        val id = result.getString("id")
-        val parkTimeMinutes = result.getInt("park_time_minutes")
-        val res = TicketDto(id, parkTimeMinutes)
-        return Result.success(listOf(res))
+        val tickets = mutableListOf<TicketDto>()
+        while (result.next()) {
+            val id = result.getString("id")
+            val parkTimeMinutes = result.getInt("park_time_minutes")
+            tickets.add(TicketDto(id, parkTimeMinutes))
+        }
+        return Result.success((tickets))
     }
 }

@@ -20,20 +20,25 @@ object StorageSharedTests
         }
     }
 
-    fun storageSaveAndRead(stockage: ITicketRepository) = funSpec {
+    fun storageSaveAndRead(getStockage: () -> ITicketRepository, init: () -> Unit, teardown: () -> Unit) = funSpec {
         test("getTickets should return the list of saved tickets") {
+            init()
+            val stockage = getStockage()
             val testTicket = TicketDto("2", 3)
             stockage.saveTicket(testTicket)
             stockage.getTickets().getOrNull()?.first() shouldBe testTicket
+            teardown()
         }
     }
 
-    fun storageSaveTooLarge(stockage: ITicketRepository) = funSpec {
+    fun storageSaveTooLarge(getStockage: () -> ITicketRepository, init: () -> Unit, teardown: () -> Unit) = funSpec {
         test("sauver un ticket qui possede un large nombre de minutes") {
-
+            init()
+            val stockage = getStockage()
             val largeTicket = TicketDto("1", 445554541)
             stockage.saveTicket(largeTicket)
             stockage.countTickets() shouldBeSuccess (1)
+            teardown()
         }
     }
 }
