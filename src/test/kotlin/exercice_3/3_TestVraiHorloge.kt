@@ -2,7 +2,7 @@ package exercice_3
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldNotBe
-import adapters.driven.VraieHorloge
+import adapters.driven.timeProviders.VraieHorloge
 
 class `3_TestVraiHorloge` : StringSpec({
 

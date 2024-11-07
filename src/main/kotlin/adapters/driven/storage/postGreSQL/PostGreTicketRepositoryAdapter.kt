@@ -48,7 +48,7 @@ class PostGreTicketRepositoryAdapter :
         return Result.success(res)
     }
 
-    override fun getTickets(): Result<List<boundedContexts.location.models.DTOs.TicketDto>> {
+    override fun getTickets(): Result<List<boundedContexts.location.models.DTOs.TicketDto>> = runCatching {
         val selectStatement = storageConnection.prepareStatement(
             "select id, park_time_minutes from ticket"
         )
