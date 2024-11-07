@@ -1,6 +1,9 @@
 package adapters.driver
 
 
+import boundedContexts.location.domain.entities.Ticket
+import boundedContexts.location.useCases.AcheterUnTicketDeLocation
+import boundedContexts.location.useCases.DemandeDuTicket
 import kotlinx.coroutines.runBlocking
 import org.http4k.core.*
 import org.http4k.core.Status.Companion.I_M_A_TEAPOT
@@ -23,10 +26,10 @@ data class TicketDTO(
 )
 
 
-fun httpServer(port: Int, useCaseReadBalance: boundedContexts.location.useCases.AcheterUnTicketDeLocation): Http4kServer =
+fun httpServer(port: Int, useCaseReadBalance: AcheterUnTicketDeLocation): Http4kServer =
     locationHttpHandler(useCaseReadBalance).asServer(Jetty(port))
 
-fun locationHttpHandler(useCase: boundedContexts.location.useCases.AcheterUnTicketDeLocation): HttpHandler = CatchLensFailure.then(
+fun locationHttpHandler(useCase: AcheterUnTicketDeLocation): HttpHandler = CatchLensFailure.then(
     routes(
         "/location/ticket/{sommePayee}" bind Method.PUT to { request: Request ->
             //   val accountIdRequest = Query.string().required(name = "sommePayee")
@@ -36,17 +39,17 @@ fun locationHttpHandler(useCase: boundedContexts.location.useCases.AcheterUnTick
             when (val parsedAmount = sommePayee.toIntOrNull()) {
                 null -> Response(I_M_A_TEAPOT)
                 else -> {
-                    val demande = boundedContexts.location.useCases.DemandeDuTicket(
+                    val demande = DemandeDuTicket(
                         montantEuro = parsedAmount
                     )
 
-                    var reponse: Result<boundedContexts.location.domain.entities.Ticket>
+                    var reponse: Result<Ticket>
                     runBlocking {
                         //to get asynchronous, we need to use Loom https://www.javaadvent.com/2022/12/asynchronous-functional-web-server-in-kotlin.html
                         reponse = useCase.handle(demande)
                     }
 
-                    // Block Body Lambda If the lambda body contains multiple statements, the last expression is returned implicitly.
+                    // Block Body Lambda: If the lambda body contains multiple statements, the last expression is returned implicitly.
                      when {
                         reponse.isSuccess -> {
                             val ticket = reponse.getOrNull()!!
