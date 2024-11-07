@@ -1,5 +1,6 @@
 package adapters.driven.storage.postGreSQL
 
+import boundedContexts.location.models.DTOs.TicketDto
 import boundedContexts.location.ports.ITicketRepository
 import java.sql.Connection
 import java.sql.DriverManager
@@ -48,6 +49,14 @@ class PostGreTicketRepositoryAdapter :
     }
 
     override fun getTickets(): Result<List<boundedContexts.location.models.DTOs.TicketDto>> {
-        TODO("Not yet implemented")
+        val selectStatement = storageConnection.prepareStatement(
+            "select (id, park_time_minutes) from ticket"
+        )
+        val result = selectStatement.executeQuery()
+        result.next()
+        val id = result.getString("id")
+        val parkTimeMinutes = result.getInt("park_time_minutes")
+        val res = TicketDto(id, parkTimeMinutes)
+        return Result.success(listOf(res))
     }
 }

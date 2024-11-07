@@ -11,10 +11,8 @@ class PostGreAdaptorTest : StringSpec({
         // Arrange
         val postgreSQLContainer = PostgreSQLContainer("postgres:16")
         postgreSQLContainer.start()
-        val userName = postgreSQLContainer.username
-        val password = postgreSQLContainer.password
 
-        val repo = PostGreTicketRepositoryAdapter(postgreSQLContainer.jdbcUrl, userName, password)
+        val repo = PostGreTicketRepositoryAdapter(postgreSQLContainer.jdbcUrl, postgreSQLContainer.username, postgreSQLContainer.password)
 
         val countTicketsBefore = repo.countTickets()
         countTicketsBefore.getOrThrow() shouldBe 0

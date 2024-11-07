@@ -15,7 +15,11 @@ class FauxStockageTest : FunSpec({
         }
 
     // TESTS PARTAGES 🤓
-    include( StorageSharedTests.storageSaveAndCount(stockage = fauxStockageFactory()))
+    include( StorageSharedTests.storageSaveAndCount(
+        getStockage = fauxStockageFactory,
+        init = {},
+        teardown = {}
+    ))
     include(StorageSharedTests.storageSaveAndRead(stockage = fauxStockageFactory()))
     include(StorageSharedTests.storageSaveTooLarge(stockage = fauxStockageFactory()))
 })

@@ -1,5 +1,6 @@
 package adapters
 
+import adapters.driven.storage.postGreSQL.PostGreTicketRepositoryAdapter
 import boundedContexts.location.models.DTOs.TicketDto
 import io.kotest.core.spec.style.funSpec
 import io.kotest.matchers.shouldBe
@@ -9,11 +10,13 @@ import io.kotest.matchers.result.shouldBeSuccess
 // TIPS : remettre en place les tests partagés et montrer que le Fake doit etre conforme au TestContainer
 object StorageSharedTests
 {
-    fun storageSaveAndCount(stockage: ITicketRepository) = funSpec {
+    fun storageSaveAndCount(getStockage: () -> ITicketRepository, init: () -> Unit, teardown: () -> Unit) = funSpec {
         test("cardinalityTickets should return the number of saved tickets") {
-
-            stockage.saveTicket(TicketDto("1", 2))
-            stockage.countTickets().getOrNull() shouldBe 1
+            init()
+            val storage = getStockage()
+            storage.saveTicket(TicketDto("1", 2))
+            storage.countTickets().getOrNull() shouldBe 1
+            teardown()
         }
     }
 
