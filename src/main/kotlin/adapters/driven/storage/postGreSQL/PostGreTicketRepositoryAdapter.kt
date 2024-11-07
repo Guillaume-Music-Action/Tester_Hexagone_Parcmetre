@@ -29,13 +29,14 @@ class PostGreTicketRepositoryAdapter :
         createTableStatement.execute()
     }
 
-    override fun saveTicket(ticket: boundedContexts.location.models.DTOs.TicketDto) = runCatching {
+    override fun saveTicket(ticket: boundedContexts.location.models.DTOs.TicketDto): Result<Boolean> {
         val insertStatement = storageConnection.prepareStatement(
             "insert into ticket(id, park_time_minutes) values (?, ?)"
         )
         insertStatement.setString(1, ticket.id)
         insertStatement.setInt(2, ticket.amountOfMinutes)
-        insertStatement.execute()
+        val res = insertStatement.execute()
+        return Result.success(res)
     }
 
     override fun countTickets(): Result<Int> = runCatching {
